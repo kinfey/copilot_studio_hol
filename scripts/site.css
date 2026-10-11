@@ -62,7 +62,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cp-accent); out
 .header-left, .header-actions, .brand { display: flex; align-items: center; gap: 8px; }
 .brand { gap: 10px; color: var(--cp-text); flex-shrink: 0; }
 .brand:hover { text-decoration: none; }
-.brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 0.625rem; background: var(--cp-accent-soft); color: var(--cp-accent); font-size: 12px; font-weight: 700; }
 .brand strong, .brand small { display: block; }
 .brand strong { font-size: 15px; font-weight: 600; }
 .brand small { color: var(--cp-text-muted); font-size: 10px; line-height: 1.15; }
@@ -90,6 +89,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cp-accent); out
 .breadcrumbs { display: flex; align-items: center; margin: 0 0 24px; gap: 8px; color: var(--cp-text-muted); font-size: 13px; }
 .document-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--cp-text-soft); margin-bottom: 16px; }
 .document-meta span { color: var(--cp-accent); letter-spacing: 1px; }
+.downloads { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.pdf-download { font-weight: 600; }
+.download-panel { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 32px; padding: 20px; border: 1px solid var(--cp-border); border-radius: 0.625rem; background: var(--cp-bg-elevated); font-size: 14px; }
 .article { min-height: 65vh; }
 .article h1 { margin: 0 0 20px; font-size: clamp(32px, 4vw, 42px); font-weight: 600; line-height: 1.17; letter-spacing: -0.025em; }
 .article h2 { margin: 42px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--cp-border); font-size: 26px; font-weight: 600; line-height: 1.25; }
@@ -141,7 +143,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cp-accent); out
 @media (max-width: 640px) {
   .header-inner { padding: 0 10px; gap: 4px; }
   .brand strong { font-size: 12px; }
-  .brand-mark { display: none; }
   .header-left, .header-actions { gap: 4px; }
   .search-shell { position: static; width: 34px; padding: 0 9px; }
   .search-shell input { width: 0; }
@@ -158,7 +159,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cp-accent); out
   .sidebar { transition: none; }
 }
 @media print {
-  .site-header, .sidebar, .article-toc, .page-nav, .scroll-top, .skip { display: none; }
+  .site-header, .sidebar, .article-toc, .page-nav, .scroll-top, .skip, .downloads, .download-panel { display: none; }
   .docs-layout { margin: 0; padding: 0; }
   .content-shell { display: block; width: 100%; padding: 0; }
 }

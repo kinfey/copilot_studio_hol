@@ -73,6 +73,8 @@ Browse the [English website](https://kinfey.github.io/copilot_studio_hol/) or [C
 
 The documentation layout follows [Let's Learn Microsoft KARS](https://kinfey.github.io/LetsLearnMicrosoftKars/): a fixed header, lab sidebar, central article, and right-hand contents list. It also provides document search, a color-theme toggle, mobile navigation, and previous/next lab links.
 
+Each lab page offers Markdown and PDF downloads at the top and bottom. English pages download `README.pdf`; Chinese pages download `README.zh.pdf`. Update these PDF snapshots alongside the manuals when their content changes.
+
 The Markdown manuals are the source of truth. A push to `main` runs [.github/workflows/pages.yml](.github/workflows/pages.yml) to build and deploy the site; do not edit generated HTML directly.
 
 To generate the same site locally with Node.js 22 or later:

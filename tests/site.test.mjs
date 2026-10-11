@@ -22,6 +22,7 @@ test("all twelve bilingual pages contain navigation, content, and theme support"
       assert.match(html, /class="article-toc"/);
       assert.match(html, /id="search-input"/);
       assert.match(html, /id="theme-toggle"/);
+      assert.doesNotMatch(html, /class="brand-mark"/);
       if (folder) assert.ok((html.match(/<h2 /g) ?? []).length >= 7);
     }
   }
@@ -54,6 +55,21 @@ test("Chinese bold labels render without changing code examples", async () => {
   assert.ok(!html.match(/<article[\s\S]*?<\/article>/)[0].includes("**场景：**"));
   const sales = await fs.readFile(path.join(site, "lab-01/index.zh.html"), "utf8");
   assert.ok(sales.includes("&lt;br&gt;"));
+});
+
+test("each lab downloads its matching English or Chinese PDF", async () => {
+  for (const folder of folders.filter(Boolean)) {
+    for (const zh of [false, true]) {
+      const filename = zh ? "README.zh.pdf" : "README.pdf";
+      const html = await fs.readFile(path.join(site, folder, zh ? "index.zh.html" : "index.html"), "utf8");
+      assert.ok(html.includes(`class="pdf-download" href="${filename}" download`));
+      assert.equal((html.match(/class="pdf-download"/g) ?? []).length, 2);
+      const pdf = await fs.readFile(path.join(site, folder, filename));
+      assert.equal(pdf.subarray(0, 5).toString(), "%PDF-");
+      assert.ok(pdf.subarray(-1024).toString().includes("%%EOF"));
+      assert.ok(pdf.length > 10000);
+    }
+  }
 });
 
 test("no dependencies, credentials, or local account paths are shipped", async () => {

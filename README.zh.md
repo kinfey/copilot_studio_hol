@@ -73,6 +73,8 @@ lab-04-02/            合同合规与审计报告
 
 文档布局参考 [Let's Learn Microsoft KARS](https://kinfey.github.io/LetsLearnMicrosoftKars/)，采用固定顶栏、左侧实验导航、中间正文与右侧目录，并提供文档搜索、颜色主题切换、移动端菜单和上下实验导航。
 
+每个实验页面的顶部和底部均提供 Markdown 与 PDF 下载。英文页面下载 `README.pdf`，中文页面下载 `README.zh.pdf`。手册内容修改时，应同步更新对应 PDF 快照。
+
 Markdown 手册是内容源。推送到 `main` 时，[.github/workflows/pages.yml](.github/workflows/pages.yml)会自动构建并部署网站，不要直接编辑生成的 HTML。
 
 使用 Node.js 22 或更高版本在本地生成相同网站：
