@@ -1,0 +1,10 @@
+{
+  "documentId": "LEGAL-ATLAS-2026",
+  "department": "Legal",
+  "productLine": "AtlasSaaS",
+  "year": 2026,
+  "status": "Approved",
+  "allowedGroupIds": ["LAB04-LEGAL-TRAINING-GROUP"],
+  "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026",
+  "notice": "虚构教学元数据，不是企业法务政策。真实上线必须替换引用URL和授权组。"
+}

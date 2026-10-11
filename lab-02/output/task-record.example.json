@@ -1,0 +1,13 @@
+{
+  "provenance": "离线模拟验收样例，非 Teams、Planner、To-Do 或真实 Agent 执行",
+  "requestId": "LAB02-REQ-001",
+  "decision": "approve",
+  "assignedAlias": "self",
+  "status": "Created",
+  "taskBackend": "Planner",
+  "taskId": "SIMULATED-TASK-001",
+  "dueAtUtc": "2026-10-13T09:00:00Z",
+  "remindAtUtc": "2026-10-13T08:00:00Z",
+  "reminderStatus": "Pending",
+  "meaning": "仅示例说明提醒计划已登记；不表示提醒已送达"
+}

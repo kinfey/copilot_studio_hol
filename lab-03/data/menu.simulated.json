@@ -1,0 +1,8 @@
+{
+  "provenance": "虚构教学价格，不是麦当劳实时菜单或报价。金额单位为人民币分。",
+  "items": [
+    {"id":"SIM-BURGER","name":"教学汉堡","unitPriceFen":1200},
+    {"id":"SIM-COFFEE","name":"教学咖啡","unitPriceFen":600},
+    {"id":"SIM-FRIES","name":"教学薯条","unitPriceFen":800}
+  ]
+}

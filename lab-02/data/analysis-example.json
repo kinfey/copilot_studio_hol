@@ -1,0 +1,8 @@
+{
+  "title": "整理销售演示资料",
+  "summary": "核对模拟销售表并准备三页汇报大纲，完成后提交内部审阅；不对客户发送。",
+  "category": "sales",
+  "needsClarification": false,
+  "clarificationQuestion": "",
+  "riskNotes": [{ "text": "仅使用模拟销售数据" }, { "text": "禁止向客户发送资料" }]
+}

@@ -1,0 +1,69 @@
+kind: AdaptiveDialog
+modelDescription: 仅在用户明确要求模拟订餐或教学套餐预算试算时使用。询问今天有什么优惠券、真实优惠查询时不得使用此主题。仅虚构菜单，不调用外部服务。
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: intro
+      activity: "离线教学模拟：汉堡12元、咖啡6元。虚构优惠券：教学咖啡体验券（模拟已持有）、教学套餐体验券（模拟可领取）。这些不是今日真实优惠，不能领取或核销，也不参加本次算价。"
+    - kind: Question
+      id: askBurger
+      interruptionPolicy:
+        allowInterruption: false
+      variable: init:Topic.BurgerQuantity
+      prompt: "请输入教学汉堡数量（0至10整数）："
+      entity: NumberPrebuiltEntity
+    - kind: Question
+      id: askCoffee
+      interruptionPolicy:
+        allowInterruption: false
+      variable: init:Topic.CoffeeQuantity
+      prompt: "请输入教学咖啡数量（0至10整数）："
+      entity: NumberPrebuiltEntity
+    - kind: Question
+      id: askBudget
+      interruptionPolicy:
+        allowInterruption: false
+      variable: init:Topic.BudgetYuan
+      prompt: "请输入预算（元，0至1000整数）："
+      entity: NumberPrebuiltEntity
+    - kind: ConditionGroup
+      id: validate
+      conditions:
+        - id: invalid
+          condition: =Topic.BurgerQuantity < 0 || Topic.BurgerQuantity > 10 || Mod(Topic.BurgerQuantity, 1) <> 0 || Topic.CoffeeQuantity < 0 || Topic.CoffeeQuantity > 10 || Mod(Topic.CoffeeQuantity, 1) <> 0 || Topic.BurgerQuantity + Topic.CoffeeQuantity = 0 || Topic.BudgetYuan < 0 || Topic.BudgetYuan > 1000 || Mod(Topic.BudgetYuan, 1) <> 0
+          actions:
+            - kind: SendActivity
+              id: invalidMessage
+              activity: "输入不合法：数量须为0至10整数且至少选择一件，预算须为0至1000整数（元）。本次停止试算；请重新输入“模拟订餐”。未创建真实订单，未扣款，未核销优惠券。"
+            - kind: EndDialog
+              id: invalidEnd
+    - kind: SetVariable
+      id: calculate
+      variable: Topic.TotalYuan
+      value: =Topic.BurgerQuantity * 12 + Topic.CoffeeQuantity * 6
+    - kind: SendActivity
+      id: total
+      activity: "教学汉堡 {Topic.BurgerQuantity} 件、教学咖啡 {Topic.CoffeeQuantity} 件；模拟合计 {Topic.TotalYuan} 元，预算 {Topic.BudgetYuan} 元。"
+    - kind: ConditionGroup
+      id: budgetCheck
+      conditions:
+        - id: withinBudget
+          condition: =Topic.TotalYuan <= Topic.BudgetYuan
+          actions:
+            - kind: SendActivity
+              id: affordable
+              activity: "试算在预算内，仅供教学参考。"
+      elseActions:
+        - kind: SendActivity
+          id: overBudget
+          activity: "超出预算，请减少餐品或调整预算。这不是成交确认。"
+    - kind: SendActivity
+      id: disclaimer
+      activity: "模拟订餐，未创建真实订单，未扣款，未核销优惠券。orderCreated=false；paymentRequired=false；couponRedeemed=false。不发送Teams消息，不启用定时通知。"
+    - kind: EndDialog
+      id: done
+inputType: {}
+outputType: {}

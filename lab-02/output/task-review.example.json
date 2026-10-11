@@ -1,0 +1,76 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "整理销售演示资料",
+      "weight": "Bolder",
+      "size": "Medium",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "核对模拟销售表并准备三页汇报大纲，完成后提交内部审阅；不对客户发送。",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "请求编号：LAB02-REQ-001\n截止：2026-10-13 17:00 UTC+8\n提醒：2026-10-13 16:00 UTC+8\n仅授权审核人可以提交；批准与指派均会创建任务。",
+      "wrap": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "assigneeKey",
+      "label": "指派负责人（仅“指派任务”使用；批准使用默认负责人）",
+      "style": "compact",
+      "value": "self",
+      "choices": [
+        {
+          "title": "默认负责人（实验中为自己）",
+          "value": "self"
+        },
+        {
+          "title": "备用负责人（实验白名单成员）",
+          "value": "backup"
+        }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "reviewComment",
+      "label": "审核意见（打回时必须填写）",
+      "isMultiline": true,
+      "maxLength": 500,
+      "placeholder": "填写意见；打回原因由流程再次校验"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "批准",
+      "data": {
+        "decision": "approve",
+        "requestId": "LAB02-REQ-001"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "打回",
+      "data": {
+        "decision": "reject",
+        "requestId": "LAB02-REQ-001"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "指派任务",
+      "data": {
+        "decision": "assign",
+        "requestId": "LAB02-REQ-001"
+      }
+    }
+  ]
+}

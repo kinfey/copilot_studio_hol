@@ -1,0 +1,53 @@
+[
+  {
+    "search": "AtlasGateway 2.1 的 AGW-401 在证书轮换后表示什么？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'IT' and productLine eq 'AtlasGateway' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasGateway 2.1 的 AGW-401 在证书轮换后表示什么？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  },
+  {
+    "search": "AtlasGateway 2.1 证书链和绑定版本的获批排查步骤是什么？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'IT' and productLine eq 'AtlasGateway' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasGateway 2.1 证书链和绑定版本的获批排查步骤是什么？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  },
+  {
+    "search": "AtlasGateway AGW-401 何时应创建内部事件工单并升级人工处理？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'IT' and productLine eq 'AtlasGateway' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasGateway AGW-401 何时应创建内部事件工单并升级人工处理？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  }
+]

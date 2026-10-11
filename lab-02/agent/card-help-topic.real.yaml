@@ -1,0 +1,12 @@
+kind: AdaptiveDialog
+modelDescription: 解释卡片按钮：批准使用默认负责人，打回必须说明原因，指派从白名单选择负责人。解释 Planner 截止与提醒不是同一字段，不直接审批或发送。
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_gUvNEE
+      activity: 批准使用默认负责人创建任务；打回必须说明原因，不创建任务；指派任务表示批准并选择白名单负责人。截止时间不等于提醒。Planner 的提醒由独立流程发送，To-Do 提醒属于当前连接账号。
+inputType: {}
+outputType: {}

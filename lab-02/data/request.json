@@ -1,0 +1,10 @@
+{
+  "requestId": "LAB02-REQ-001",
+  "requestText": "请安排整理本周销售演示资料：核对模拟销售表、准备三页汇报大纲，完成后提交内部审阅。不要发送给客户。",
+  "submittedAtUtc": "2026-10-12T01:00:00Z",
+  "dueAtUtc": "2026-10-13T09:00:00Z",
+  "remindAtUtc": "2026-10-13T08:00:00Z",
+  "timeZone": "China Standard Time",
+  "defaultAssigneeKey": "self",
+  "allowedAssigneeKeys": ["self", "backup"]
+}

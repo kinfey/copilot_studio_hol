@@ -1,0 +1,34 @@
+setProperty(
+  setProperty(
+    outputs('CardTemplate'),
+    'body',
+    createArray(
+      setProperty(outputs('CardTemplate')?['body'][0],'text',body('ParseAnalysis')?['title']),
+      setProperty(outputs('CardTemplate')?['body'][1],'text',body('ParseAnalysis')?['summary']),
+      setProperty(
+        outputs('CardTemplate')?['body'][2],
+        'text',
+        concat(
+          '请求编号：',body('GetRequest')?['Title'],
+          decodeUriComponent('%0A'),
+          '截止（UTC+8）：',convertTimeZone(body('GetRequest')?['DueAtUtc'],'UTC','China Standard Time','yyyy-MM-dd HH:mm'),
+          decodeUriComponent('%0A'),
+          '提醒（UTC+8）：',convertTimeZone(body('GetRequest')?['RemindAtUtc'],'UTC','China Standard Time','yyyy-MM-dd HH:mm'),
+          decodeUriComponent('%0A'),
+          '仅授权审核人可以提交；批准与指派均会创建任务。'
+        )
+      ),
+      outputs('CardTemplate')?['body'][3],
+      outputs('CardTemplate')?['body'][4]
+    )
+  ),
+  'actions',
+  createArray(
+    setProperty(outputs('CardTemplate')?['actions'][0],'data',
+      setProperty(outputs('CardTemplate')?['actions'][0]?['data'],'requestId',body('GetRequest')?['Title'])),
+    setProperty(outputs('CardTemplate')?['actions'][1],'data',
+      setProperty(outputs('CardTemplate')?['actions'][1]?['data'],'requestId',body('GetRequest')?['Title'])),
+    setProperty(outputs('CardTemplate')?['actions'][2],'data',
+      setProperty(outputs('CardTemplate')?['actions'][2]?['data'],'requestId',body('GetRequest')?['Title']))
+  )
+)

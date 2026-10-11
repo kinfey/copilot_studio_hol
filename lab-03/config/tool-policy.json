@@ -1,0 +1,8 @@
+{
+  "allowAll": false,
+  "enabled": [],
+  "mode": "offline-studio-simulation",
+  "externalMcpEnabled": false,
+  "forbidden": ["create-order", "cancel-order", "mall-create-order", "party-order-create", "auto-bind-coupons", "draw-lottery", "delivery-create-address"],
+  "notice": "当前不绑定MCP、不调用任何外部工具。仅执行Studio内部SimulateMeal主题；DLP未放行。"
+}

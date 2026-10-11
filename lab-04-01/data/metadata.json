@@ -1,0 +1,10 @@
+{
+  "documentId": "IT-AGW-2026",
+  "department": "IT",
+  "productLine": "AtlasGateway",
+  "year": 2026,
+  "status": "Approved",
+  "allowedGroupIds": ["LAB04-TRAINING-GROUP"],
+  "sourceUrl": "https://example.invalid/training/IT-AGW-2026",
+  "notice": "虚构元数据。上线替换为实验站点真实文档链接与授权组；该URL不能用作真实可访问引用。"
+}

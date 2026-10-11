@@ -1,0 +1,8 @@
+{
+  "mode": "simulation",
+  "notice": "全部为虚构教学券，不是麦当劳今日优惠，不领取、不核销、不参与本实验算价。",
+  "coupons": [
+    {"id":"SIM-COUPON-OWNED","title":"教学咖啡体验券","status":"模拟已持有","conditions":"仅演示分类，没有真实有效期或兑换权"},
+    {"id":"SIM-COUPON-AVAILABLE","title":"教学套餐体验券","status":"模拟可领取","conditions":"仅演示分类，不能实际领取"}
+  ]
+}

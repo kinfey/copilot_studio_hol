@@ -1,0 +1,72 @@
+[
+  {
+    "id": "LEGAL-ATLAS-2026-b0656d325f34",
+    "documentId": "LEGAL-ATLAS-2026",
+    "title": "2026 AtlasSaaS 合同审核教学规则",
+    "content": "# 2026 AtlasSaaS 合同审核教学规则\n\n以下为虚构内部规则，不是法律要求。适用范围：Legal；AtlasSaaS；2026；Approved。\n",
+    "department": "Legal",
+    "productLine": "AtlasSaaS",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-LEGAL-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026"
+  },
+  {
+    "id": "LEGAL-ATLAS-2026-2741abbd754f",
+    "documentId": "LEGAL-ATLAS-2026",
+    "title": "2026 AtlasSaaS 合同审核教学规则 / POL-RET-01 数据删除",
+    "content": "# 2026 AtlasSaaS 合同审核教学规则\n## POL-RET-01 数据删除\n合同终止后客户数据应在 30 天内删除。超过 30 天需法务书面批准。\n判断时引用合同原文和本规则原文；缺少保存期限时标注信息不足，不推测期限。\n\n| 规则 | 审核动作 |\n| --- | --- |\n| 保存期限不超过30天 | 记录符合教学规则 |\n| 保存期限超过30天 | 标注规则冲突并提交法务 |\n",
+    "department": "Legal",
+    "productLine": "AtlasSaaS",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-LEGAL-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026"
+  },
+  {
+    "id": "LEGAL-ATLAS-2026-c6c9555282a0",
+    "documentId": "LEGAL-ATLAS-2026",
+    "title": "2026 AtlasSaaS 合同审核教学规则 / POL-LIA-02 责任限制",
+    "content": "# 2026 AtlasSaaS 合同审核教学规则\n## POL-LIA-02 责任限制\n不得接受供应商全部免责或零责任上限；必须由法务复核责任安排，不自动补写金额。\n",
+    "department": "Legal",
+    "productLine": "AtlasSaaS",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-LEGAL-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026"
+  },
+  {
+    "id": "LEGAL-ATLAS-2026-4cac17a5090b",
+    "documentId": "LEGAL-ATLAS-2026",
+    "title": "2026 AtlasSaaS 合同审核教学规则 / POL-XBR-03 跨境转移",
+    "content": "# 2026 AtlasSaaS 合同审核教学规则\n## POL-XBR-03 跨境转移\n涉及客户数据跨境转移，须在合同中要求客户事先书面批准与法务评估。\n",
+    "department": "Legal",
+    "productLine": "AtlasSaaS",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-LEGAL-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026"
+  },
+  {
+    "id": "LEGAL-ATLAS-2026-a89229fdd64d",
+    "documentId": "LEGAL-ATLAS-2026",
+    "title": "2026 AtlasSaaS 合同审核教学规则 / POL-SUP-04 服务响应",
+    "content": "# 2026 AtlasSaaS 合同审核教学规则\n## POL-SUP-04 服务响应\n教学规则不规定普通支持响应时限。未找到相关规则时标注未覆盖，不虚构违规依据。\n",
+    "department": "Legal",
+    "productLine": "AtlasSaaS",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-LEGAL-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/LEGAL-ATLAS-2026"
+  }
+]

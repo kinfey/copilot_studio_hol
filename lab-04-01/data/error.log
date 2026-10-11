@@ -1,0 +1,5 @@
+LAB04 synthetic log; no production credentials or customer data.
+2026-10-11T09:00:00Z INFO product=AtlasGateway version=2.1 department=IT
+2026-10-11T09:01:00Z ERROR code=AGW-401 trace=LAB04-TRACE-001
+2026-10-11T09:01:00Z ERROR message="Certificate validation failed after rotation"
+2026-10-11T09:01:01Z WARN retries=3 action="Request rejected; no data written"

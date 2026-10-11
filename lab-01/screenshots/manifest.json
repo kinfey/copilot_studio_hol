@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-11T10:19:11.584Z",
+  "browser": "Microsoft Edge",
+  "channel": "msedge",
+  "notice": "保留公开 Microsoft Learn 文档截图；本地演示页面及其截图已删除",
+  "images": [
+    {
+      "file": "11-official-recurrence.png",
+      "source": "microsoft-learn-public-documentation",
+      "url": "https://learn.microsoft.com/en-us/power-automate/run-scheduled-tasks",
+      "caption": "Microsoft Learn 公开官方文档页面，非登录租户配置"
+    },
+    {
+      "file": "12-official-prompt.png",
+      "source": "microsoft-learn-public-documentation",
+      "url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/nlu-prompt-node",
+      "caption": "Microsoft Learn 公开官方文档页面，非登录租户配置"
+    },
+    {
+      "file": "13-official-execute-agent.png",
+      "source": "microsoft-learn-public-documentation",
+      "url": "https://learn.microsoft.com/en-us/connectors/microsoftcopilotstudio/",
+      "caption": "Microsoft Learn 公开官方文档页面，非登录租户配置"
+    }
+  ],
+  "version": "155.0.4283.45",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0"
+}

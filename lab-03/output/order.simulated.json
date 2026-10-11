@@ -1,0 +1,26 @@
+{
+  "mode": "simulation",
+  "notice": "模拟订餐，未创建真实订单，未扣款，未核销优惠券。价格为虚构教学数据。",
+  "items": [
+    {
+      "id": "SIM-BURGER",
+      "name": "教学汉堡",
+      "unitPriceFen": 1200,
+      "quantity": 1,
+      "subtotalFen": 1200
+    },
+    {
+      "id": "SIM-COFFEE",
+      "name": "教学咖啡",
+      "unitPriceFen": 600,
+      "quantity": 1,
+      "subtotalFen": 600
+    }
+  ],
+  "totalFen": 1800,
+  "budgetFen": 2500,
+  "withinBudget": true,
+  "orderCreated": false,
+  "paymentRequired": false,
+  "couponRedeemed": false
+}

@@ -1,0 +1,42 @@
+{
+  "provenance": "离线人工标注验收夹具，非真实Agent审计；规则为虚构内部教学规则，不是法律意见。",
+  "contractId": "LAB04-C-001",
+  "findings": [
+    {
+      "clauseId": "第一条",
+      "contractQuote": "服务终止后，供应商继续保存客户数据 180 天，然后删除。",
+      "ruleId": "POL-RET-01",
+      "ruleQuote": "合同终止后客户数据应在 30 天内删除。超过 30 天需法务书面批准。",
+      "result": "规则冲突",
+      "reason": "180天超过教学规则30天，合同未记载法务书面批准。",
+      "reviewStatus": "待法务复核"
+    },
+    {
+      "clauseId": "第二条",
+      "contractQuote": "供应商不承担任何直接或间接责任，责任上限为零。",
+      "ruleId": "POL-LIA-02",
+      "ruleQuote": "不得接受供应商全部免责或零责任上限；必须由法务复核责任安排，不自动补写金额。",
+      "result": "规则冲突",
+      "reason": "全部免责与零责任上限触发教学规则复核。",
+      "reviewStatus": "待法务复核"
+    },
+    {
+      "clauseId": "第三条",
+      "contractQuote": "供应商可自行决定向任意境外地区转移客户数据，无需客户事先批准。",
+      "ruleId": "POL-XBR-03",
+      "ruleQuote": "涉及客户数据跨境转移，须在合同中要求客户事先书面批准与法务评估。",
+      "result": "规则冲突",
+      "reason": "无需批准与教学规则要求不一致。",
+      "reviewStatus": "待法务复核"
+    },
+    {
+      "clauseId": "第四条",
+      "contractQuote": "普通支持请求在两个工作日内响应。",
+      "ruleId": "POL-SUP-04",
+      "ruleQuote": "教学规则不规定普通支持响应时限。未找到相关规则时标注未覆盖，不虚构违规依据。",
+      "result": "未覆盖",
+      "reason": "教学规则没有相应时限，不能判定违规。",
+      "reviewStatus": "待法务复核"
+    }
+  ]
+}

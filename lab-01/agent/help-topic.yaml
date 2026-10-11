@@ -1,0 +1,19 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - 周报口径
+      - 销售周报怎么算
+      - 为什么不直接发送邮件
+      - 环比是什么
+      - 查看周报帮助
+  actions:
+    - kind: SendActivity
+      id: explainScope
+      activity: 本周周一至报告日的已完成订单，对比上周同星期截止日。金额由 Office Script 计算，Prompt 只提取指标并写摘要；我不直接发送邮件，Outlook 默认生成草稿。
+    - kind: EndDialog
+      id: endHelp
+inputType: {}
+outputType: {}

@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["requestId", "decision"],
+  "properties": {
+    "requestId": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "decision": { "type": "string", "enum": ["approve", "reject", "assign"] },
+    "assigneeKey": { "type": "string", "enum": ["self", "backup"] },
+    "reviewComment": { "type": "string", "maxLength": 500 }
+  },
+  "additionalProperties": false
+}

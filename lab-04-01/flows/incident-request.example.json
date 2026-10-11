@@ -1,0 +1,12 @@
+{
+  "notice": "拟提交数据示例，不是API响应，不会创建真实工单。",
+  "method": "POST",
+  "path": "/api/now/table/incident",
+  "body": {
+    "short_description": "[LAB04] AtlasGateway 2.1 AGW-401 after certificate rotation",
+    "description": "Synthetic log LAB04-TRACE-001. Check approved certificate chain and binding guidance. User confirmation required.",
+    "correlation_id": "LAB04-INCIDENT-001"
+  },
+  "authentication": "由受控自定义连接器配置 OAuth，不把凭据写进Prompt或JSON。",
+  "retryPolicy": "写入超时状态为 Unknown；先按 correlation_id 查询，不能直接重复POST。"
+}

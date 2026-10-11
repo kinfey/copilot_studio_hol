@@ -1,0 +1,17 @@
+OrderId,SaleDate,Region,Product,Units,RevenueCNY,Status
+S001,2026-09-28,华东,订阅A,10,10000,Completed
+S002,2026-09-29,华南,订阅B,8,12000,Completed
+S003,2026-09-30,华北,订阅A,6,6000,Completed
+S004,2026-10-01,华东,订阅B,12,18000,Completed
+S005,2026-10-02,华南,订阅A,14,14000,Completed
+S006,2026-10-03,华北,订阅B,10,15000,Completed
+S007,2026-10-04,华东,订阅A,5,5000,Completed
+S008,2026-10-05,华东,订阅A,20,20000,Completed
+S009,2026-10-06,华南,订阅B,16,24000,Completed
+S010,2026-10-07,华北,订阅A,15,15000,Completed
+S011,2026-10-08,华东,订阅B,18,27000,Completed
+S012,2026-10-09,华南,订阅A,14,14000,Completed
+S013,2026-10-09,华北,订阅B,8,12000,Completed
+S014,2026-10-09,华东,订阅A,5,5000,Pending
+S015,2026-10-10,华南,订阅B,6,9000,Completed
+S016,2026-10-12,华北,订阅A,9,9000,Completed

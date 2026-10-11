@@ -1,0 +1,18 @@
+{
+  "notice": "这是填写清单，不会自动部署。尖括号内容必须用自己的实验资源替换，不要公开真实账号与资源标识。",
+  "sharePointSite": "<YOUR_TEST_SHAREPOINT_SITE>",
+  "requestList": "Lab02Requests",
+  "teamId": "<YOUR_TEST_TEAM_ID>",
+  "channelId": "<YOUR_STANDARD_CHANNEL_ID>",
+  "reviewerObjectId": "<YOUR_REVIEWER_ENTRA_OBJECT_ID>",
+  "selfObjectId": "<YOUR_ENTRA_OBJECT_ID>",
+  "backupObjectId": "<YOUR_TEST_BACKUP_ENTRA_OBJECT_ID>",
+  "plannerGroupId": "<YOUR_GROUP_ID>",
+  "plannerPlanId": "<YOUR_BASIC_PLAN_ID>",
+  "plannerBucketId": "<YOUR_BUCKET_ID>",
+  "todoListId": "<YOUR_OWN_TODO_LIST_ID>",
+  "taskBackend": "Planner",
+  "timeZone": "China Standard Time",
+  "reminderLeadMinutes": 60,
+  "cardTimeout": "PT1H"
+}

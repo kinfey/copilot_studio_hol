@@ -1,0 +1,9 @@
+[
+  {"file":"01-real-agent-instructions.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"Helpdesk 全局指令编辑区域"},
+  {"file":"02-real-knowledge-upload.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"runbook.clean.md 上传表单，不是自定义检索执行结果"},
+  {"file":"04-real-multi-query-test.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"三子问题 Prompt 真实测试输出"},
+  {"file":"05-official-hybrid-search.png","source":"https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview","kind":"官方文档","method":"Playwright + Microsoft Edge"},
+  {"file":"06-official-pre-filter.png","source":"https://learn.microsoft.com/en-us/azure/search/vector-search-filters","kind":"官方文档","method":"Playwright + Microsoft Edge"},
+  {"file":"07-official-servicenow.png","source":"https://learn.microsoft.com/en-us/connectors/service-now/","kind":"官方文档","method":"Playwright + Microsoft Edge"},
+  {"file":"08-real-knowledge-ready.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"定位runbook.clean.md所在行，仅截取Ready状态单元格，不含修改者"}
+]

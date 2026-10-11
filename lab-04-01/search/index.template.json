@@ -1,0 +1,38 @@
+{
+  "name": "lab04-knowledge",
+  "fields": [
+    {"name":"id","type":"Edm.String","key":true,"filterable":true},
+    {"name":"documentId","type":"Edm.String","filterable":true},
+    {"name":"title","type":"Edm.String","searchable":true,"analyzer":"zh-Hans.microsoft"},
+    {"name":"content","type":"Edm.String","searchable":true,"analyzer":"zh-Hans.microsoft"},
+    {"name":"sourceUrl","type":"Edm.String"},
+    {"name":"department","type":"Edm.String","filterable":true},
+    {"name":"productLine","type":"Edm.String","filterable":true},
+    {"name":"year","type":"Edm.Int32","filterable":true},
+    {"name":"status","type":"Edm.String","filterable":true},
+    {"name":"allowedGroupIds","type":"Collection(Edm.String)","filterable":true},
+    {"name":"contentVector","type":"Collection(Edm.Single)","searchable":true,"dimensions":1536,"vectorSearchProfile":"lab04-vector"}
+  ],
+  "vectorSearch": {
+    "algorithms":[{"name":"lab04-hnsw","kind":"hnsw","hnswParameters":{"metric":"cosine"}}],
+    "profiles":[{"name":"lab04-vector","algorithm":"lab04-hnsw","vectorizer":"lab04-vectorizer"}],
+    "vectorizers":[{
+      "name":"lab04-vectorizer","kind":"azureOpenAI",
+      "azureOpenAIParameters":{
+        "resourceUri":"https://<YOUR_OPENAI_RESOURCE>.openai.azure.com",
+        "deploymentId":"<YOUR_EMBEDDING_DEPLOYMENT>",
+        "modelName":"text-embedding-3-small"
+      }
+    }]
+  },
+  "semantic": {
+    "configurations":[{
+      "name":"lab04-semantic",
+      "prioritizedFields":{
+        "titleField":{"fieldName":"title"},
+        "prioritizedContentFields":[{"fieldName":"content"}],
+        "prioritizedKeywordsFields":[{"fieldName":"productLine"}]
+      }
+    }]
+  }
+}

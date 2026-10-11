@@ -1,0 +1,18 @@
+模拟订餐Agent flow的输入：BurgerQuantity、CoffeeQuantity、BudgetFen（Number）。
+校验：数量为0–10整数，至少有一项>0；预算为0–100000整数。
+教学固定单价（分）：汉堡1200、咖啡600。
+Compose TotalFen expression:
+add(mul(int(triggerBody()?['BurgerQuantity']),1200),mul(int(triggerBody()?['CoffeeQuantity']),600))
+
+以上输入路径必须按设计器实际生成的触发器Key调整，不能猜测输入内部名。
+先校验整数再int()，否则小数被截断。
+Respond to the agent:
+mode = simulation
+totalFen = TotalFen
+withinBudget = lessOrEquals(outputs('TotalFen'),int(triggerBody()?['BudgetFen']))
+orderCreated = false
+paymentRequired = false
+couponRedeemed = false
+notice = 模拟订餐，未创建真实订单，未扣款，未核销优惠券。价格为虚构教学数据。
+
+此流不添加MCP、HTTP、真实下单、领取券、积分兑换或支付动作。

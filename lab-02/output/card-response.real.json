@@ -1,0 +1,16 @@
+{
+  "provenance": "Playwright 操作 Microsoft Edge，真实专用 Teams 频道卡片与 Power Automate 运行结果；账号及资源标识未收录",
+  "flowDisplayName": "Button -> Post adaptive card and wait for a response",
+  "status": "Succeeded",
+  "observedData": {
+    "assigneeKey": "self",
+    "decision": "approve",
+    "requestId": "LAB02-REQ-001"
+  },
+  "scope": "只验证卡片投递、首次提交响应与消息更新。未执行 Planner 创建任务、服务端审核授权分支或定时提醒。",
+  "screenshots": [
+    "07-real-teams-review-card.png",
+    "08-real-card-response-received.png",
+    "09-real-card-flow-success.png"
+  ]
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "search": "AtlasSaaS 合同终止后保留客户数据180天是否符合2026教学数据删除规则？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'Legal' and productLine eq 'AtlasSaaS' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-LEGAL-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasSaaS 合同终止后保留客户数据180天是否符合2026教学数据删除规则？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  },
+  {
+    "search": "AtlasSaaS 合同中供应商全部免责和零责任上限是否符合教学责任限制规则？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'Legal' and productLine eq 'AtlasSaaS' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-LEGAL-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasSaaS 合同中供应商全部免责和零责任上限是否符合教学责任限制规则？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  },
+  {
+    "search": "AtlasSaaS 客户数据跨境转移是否需要事先书面批准和法务评估？",
+    "queryType": "semantic",
+    "semanticConfiguration": "lab04-semantic",
+    "filter": "department eq 'Legal' and productLine eq 'AtlasSaaS' and year eq 2026 and status eq 'Approved' and allowedGroupIds/any(g: search.in(g, 'LAB04-LEGAL-TRAINING-GROUP', ','))",
+    "vectorFilterMode": "preFilter",
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "AtlasSaaS 客户数据跨境转移是否需要事先书面批准和法务评估？",
+        "fields": "contentVector",
+        "k": 50
+      }
+    ],
+    "select": "id,documentId,title,content,sourceUrl,department,productLine,year,status",
+    "top": 5
+  }
+]

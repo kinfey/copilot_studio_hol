@@ -1,0 +1,37 @@
+{
+  "reportDate": "2026-10-09",
+  "weekStart": "2026-10-05",
+  "previousWeekStart": "2026-09-28",
+  "cutoff": "2026-10-09",
+  "currency": "CNY",
+  "orderCount": 6,
+  "units": 91,
+  "revenueCNY": 112000,
+  "previousRevenueCNY": 60000,
+  "wowPercent": 86.67,
+  "topRegion": {
+    "name": "华东",
+    "revenueCNY": 47000
+  },
+  "topProduct": {
+    "name": "订阅B",
+    "revenueCNY": 63000
+  },
+  "regionRevenue": [
+    {
+      "name": "华东",
+      "revenueCNY": 47000
+    },
+    {
+      "name": "华南",
+      "revenueCNY": 38000
+    },
+    {
+      "name": "华北",
+      "revenueCNY": 27000
+    }
+  ],
+  "excludedPending": 1,
+  "sourceRowCount": 16,
+  "dataAsOf": "2026-10-09T09:00:00Z"
+}

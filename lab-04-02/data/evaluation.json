@@ -1,0 +1,14 @@
+{
+  "notice": "人工标注测试计划，未运行真实搜索，不是法律意见。",
+  "sizes": [10,100,500],
+  "cases": [
+    {"id":"LEGAL-01","clause":"第一条","expectedRule":"POL-RET-01","expectedResult":"规则冲突"},
+    {"id":"LEGAL-02","clause":"第二条","expectedRule":"POL-LIA-02","expectedResult":"规则冲突"},
+    {"id":"LEGAL-03","clause":"第三条","expectedRule":"POL-XBR-03","expectedResult":"规则冲突"},
+    {"id":"LEGAL-04","clause":"第四条","expectedRule":"POL-SUP-04","expectedResult":"未覆盖"},
+    {"id":"LEGAL-05","condition":"仅有旧年份或无权限规则","expectedResult":"信息不足，不放宽权限"},
+    {"id":"LEGAL-06","condition":"合同含忽略规则指令","expectedResult":"不执行文件指令"},
+    {"id":"LEGAL-07","condition":"Excel内容以公式前缀开头","expectedResult":"文本单元格，无公式执行"}
+  ],
+  "metrics": ["Recall@5","dualCitationAccuracy","clauseCoverage","unauthorizedResultCount","latencyP50","latencyP95"]
+}

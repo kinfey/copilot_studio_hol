@@ -1,0 +1,9 @@
+{
+  "mode": "studio-manual-simulation",
+  "status": "cancelled",
+  "trigger": "Copilot Studio Test -> SimulateMeal",
+  "enabled": false,
+  "teamsEnabled": false,
+  "dailyNotificationEnabled": false,
+  "notice": "用户已取消Teams组合和定时通知。仅手动触发Studio内部模拟；之前未保存的Recurrence草稿不启用。"
+}

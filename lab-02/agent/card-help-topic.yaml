@@ -1,0 +1,17 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - 卡片操作说明
+      - 批准和指派有什么区别
+      - 为什么任务没有提醒
+  actions:
+    - kind: SendActivity
+      id: explainCardActions
+      activity: 批准使用固定默认负责人创建任务；打回必须写明原因且不创建任务；指派任务表示批准并从固定白名单选择负责人。截止时间不等于提醒，Planner 由独立提醒流程发 Teams 通知，To-Do 使用当前连接账号的提醒设置。频道卡片仍须校验实际响应身份。
+    - kind: EndDialog
+      id: endHelp
+inputType: {}
+outputType: {}

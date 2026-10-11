@@ -1,0 +1,16 @@
+{
+  "name": "copilot-studio-hol",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "test": "node --test tests/site.test.mjs"
+  },
+  "dependencies": {
+    "markdown-it": "14.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

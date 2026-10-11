@@ -1,0 +1,146 @@
+[
+  {
+    "OrderId": "S001",
+    "SaleDate": "2026-09-28",
+    "Region": "华东",
+    "Product": "订阅A",
+    "Units": "10",
+    "RevenueCNY": "10000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S002",
+    "SaleDate": "2026-09-29",
+    "Region": "华南",
+    "Product": "订阅B",
+    "Units": "8",
+    "RevenueCNY": "12000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S003",
+    "SaleDate": "2026-09-30",
+    "Region": "华北",
+    "Product": "订阅A",
+    "Units": "6",
+    "RevenueCNY": "6000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S004",
+    "SaleDate": "2026-10-01",
+    "Region": "华东",
+    "Product": "订阅B",
+    "Units": "12",
+    "RevenueCNY": "18000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S005",
+    "SaleDate": "2026-10-02",
+    "Region": "华南",
+    "Product": "订阅A",
+    "Units": "14",
+    "RevenueCNY": "14000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S006",
+    "SaleDate": "2026-10-03",
+    "Region": "华北",
+    "Product": "订阅B",
+    "Units": "10",
+    "RevenueCNY": "15000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S007",
+    "SaleDate": "2026-10-04",
+    "Region": "华东",
+    "Product": "订阅A",
+    "Units": "5",
+    "RevenueCNY": "5000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S008",
+    "SaleDate": "2026-10-05",
+    "Region": "华东",
+    "Product": "订阅A",
+    "Units": "20",
+    "RevenueCNY": "20000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S009",
+    "SaleDate": "2026-10-06",
+    "Region": "华南",
+    "Product": "订阅B",
+    "Units": "16",
+    "RevenueCNY": "24000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S010",
+    "SaleDate": "2026-10-07",
+    "Region": "华北",
+    "Product": "订阅A",
+    "Units": "15",
+    "RevenueCNY": "15000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S011",
+    "SaleDate": "2026-10-08",
+    "Region": "华东",
+    "Product": "订阅B",
+    "Units": "18",
+    "RevenueCNY": "27000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S012",
+    "SaleDate": "2026-10-09",
+    "Region": "华南",
+    "Product": "订阅A",
+    "Units": "14",
+    "RevenueCNY": "14000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S013",
+    "SaleDate": "2026-10-09",
+    "Region": "华北",
+    "Product": "订阅B",
+    "Units": "8",
+    "RevenueCNY": "12000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S014",
+    "SaleDate": "2026-10-09",
+    "Region": "华东",
+    "Product": "订阅A",
+    "Units": "5",
+    "RevenueCNY": "5000",
+    "Status": "Pending"
+  },
+  {
+    "OrderId": "S015",
+    "SaleDate": "2026-10-10",
+    "Region": "华南",
+    "Product": "订阅B",
+    "Units": "6",
+    "RevenueCNY": "9000",
+    "Status": "Completed"
+  },
+  {
+    "OrderId": "S016",
+    "SaleDate": "2026-10-12",
+    "Region": "华北",
+    "Product": "订阅A",
+    "Units": "9",
+    "RevenueCNY": "9000",
+    "Status": "Completed"
+  }
+]

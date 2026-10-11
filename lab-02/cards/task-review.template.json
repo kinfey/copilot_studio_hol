@@ -1,0 +1,34 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    { "type": "TextBlock", "text": "__TITLE__", "weight": "Bolder", "size": "Medium", "wrap": true },
+    { "type": "TextBlock", "text": "__SUMMARY__", "wrap": true },
+    { "type": "TextBlock", "text": "__REQUEST_AND_TIMES__", "wrap": true, "spacing": "Medium" },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "assigneeKey",
+      "label": "指派负责人（仅“指派任务”使用；批准使用默认负责人）",
+      "style": "compact",
+      "value": "self",
+      "choices": [
+        { "title": "默认负责人（实验中为自己）", "value": "self" },
+        { "title": "备用负责人（实验白名单成员）", "value": "backup" }
+      ]
+    },
+    {
+      "type": "Input.Text",
+      "id": "reviewComment",
+      "label": "审核意见（打回时必须填写）",
+      "isMultiline": true,
+      "maxLength": 500,
+      "placeholder": "填写意见；打回原因由流程再次校验"
+    }
+  ],
+  "actions": [
+    { "type": "Action.Submit", "title": "批准", "data": { "decision": "approve", "requestId": "__REQUEST_ID__" } },
+    { "type": "Action.Submit", "title": "打回", "data": { "decision": "reject", "requestId": "__REQUEST_ID__" } },
+    { "type": "Action.Submit", "title": "指派任务", "data": { "decision": "assign", "requestId": "__REQUEST_ID__" } }
+  ]
+}

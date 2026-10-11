@@ -1,0 +1,16 @@
+{
+  "provenance": "Playwright + Microsoft Edge真实产品诊断；不包含凭据、个人账号或环境标识。",
+  "connector": "McD-Coupons-Lab03",
+  "definitionFound": true,
+  "managementSurface": "Power Apps -> same environment -> Custom connectors -> Create connection",
+  "connectionCreated": false,
+  "failureCategory": "DataLossPreventionPolicyBlocked",
+  "tokenValidated": false,
+  "mcpToolsCalled": false,
+  "notificationEnabled": false,
+  "policyModified": false,
+  "agentHasBoundTools": false,
+  "teamsCancelled": true,
+  "requiredResolution": "管理员审查并批准Studio只读实验的连接器与目标主机；Teams已取消。此前DLP阻止创建连接，当前无工具绑定，未获批准不绕过。",
+  "screenshot": "09-real-dlp-block.png"
+}

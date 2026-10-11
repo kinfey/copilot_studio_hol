@@ -1,0 +1,30 @@
+[
+  {
+    "id": "IT-AGW-2026-c65f88a91a71",
+    "documentId": "IT-AGW-2026",
+    "title": "AtlasGateway 2.1 运维手册 / AGW-401 证书轮换失败",
+    "content": "# AtlasGateway 2.1 运维手册\n## AGW-401 证书轮换失败\n\n适用范围：AtlasGateway 2.1；IT；2026；状态 Approved。\n轮换后 AGW-401 表示信任链或绑定配置需要检查，不代表用户密码错误。\n检查证书链和当前绑定版本；仅由授权运维人员修复配置。不关闭 TLS 校验，不索取私钥，不建议绕过认证。\n\n| 检查项 | 说明 |\n| --- | --- |\n| 证书链 | 检查中间证书是否完整 |\n| 绑定版本 | 核对当前服务证书指纹 |\n| 升级条件 | 经批准修复后仍失败则创建内部事件工单 |\n",
+    "department": "IT",
+    "productLine": "AtlasGateway",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/IT-AGW-2026"
+  },
+  {
+    "id": "IT-AGW-2026-54579c764ace",
+    "documentId": "IT-AGW-2026",
+    "title": "AtlasGateway 2.1 运维手册 / AGW-429 请求限流",
+    "content": "# AtlasGateway 2.1 运维手册\n## AGW-429 请求限流\n适用范围同上。AGW-429 表示请求速率过高。\n先查看重试间隔和流量；保持服务端限流策略，不把限流问题解释为证书错误。\n",
+    "department": "IT",
+    "productLine": "AtlasGateway",
+    "year": 2026,
+    "status": "Approved",
+    "allowedGroupIds": [
+      "LAB04-TRAINING-GROUP"
+    ],
+    "sourceUrl": "https://example.invalid/training/IT-AGW-2026"
+  }
+]

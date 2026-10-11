@@ -1,0 +1,8 @@
+{
+  "mode": "simulation",
+  "budgetFen": 2500,
+  "items": [
+    {"id":"SIM-BURGER","quantity":1},
+    {"id":"SIM-COFFEE","quantity":1}
+  ]
+}

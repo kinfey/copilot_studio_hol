@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn",
+      "headers": {
+        "Authorization": "<YOUR_NEW_MCP_TOKEN_IN_CONNECTION_SECRET>"
+      }
+    }
+  },
+  "notice": "客户端参考配置，不是Copilot Studio导入文件。官方当前公开示例掩码为******，Authorization值是否需前缀应以本人平台生成配置为准，不能猜测Bearer。真实密钥只在连接凭据填写。"
+}

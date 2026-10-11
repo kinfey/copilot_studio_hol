@@ -1,0 +1,12 @@
+node_modules/
+_site/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.secret.json
+*.pem
+*.key
+__pycache__/
+.venv/
+edge-profile/

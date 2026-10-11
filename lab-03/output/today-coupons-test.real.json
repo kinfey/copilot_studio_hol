@@ -1,0 +1,9 @@
+{
+  "provenance": "Playwright + Microsoft Edge，Copilot Studio真实对话",
+  "question": "今天有什么优惠券",
+  "mcpConnected": false,
+  "couponsRetrieved": false,
+  "result": "Agent明确无法查询今天的真实优惠券，未触发模拟订餐",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-McDCouponAgent-Lab03. How can I help?\n\nLike\nDislike\nSent at October 11 at 9:05 PM\nJust now\nBot said: Hello, I'm Workshop-McDCouponAgent-Lab03. How can I help? Message is interactive. Click to interact.\nYou said:\n\n有什么优惠券\n\nYou said: 有什么优惠券\nBot said:\n\n当前是离线模拟，无法查询今日真实优惠。由于麦当劳外部连接被DLP阻止，当前MCP尚未连通，无法查询今天的真实优惠券。\n\nLike\nDislike\nSent at October 11 at 9:06 PM\nJust now\nBot said: 当前是离线模拟，无法查询今日真实优惠。由于麦当劳外部连接被DLP阻止，当前MCP尚未连通，无法查询今天的真实优惠券。 Message is interactive. Click to interact.\nYou said:\n\n今天有什么优惠券\n\nYou said: 今天有什么优惠券\nBot said:\n\n当前是离线模拟，无法查询今日真实优惠。由于麦当劳外部连接被DLP阻止，当前MCP尚未连通，无法查询今天的真实优惠券。\n\nLike\nDislike\nSent at October 11 at 9:06 PM\nJust now\nBot said: 当前是离线模拟，无法查询今日真实优惠。由于麦当劳外部连接被DLP阻止，当前MCP尚未连通，无法查询今天的真实优惠券。\nConnectivity Status: Connected\n0/2000\nYou're testing your agent's real responses and capabilities. Find troubleshooting help here. Make sure AI-generated content is accurate and appropriate before using. See terms",
+  "screenshot": "17-real-today-coupons-test.png"
+}

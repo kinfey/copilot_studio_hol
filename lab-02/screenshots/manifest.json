@@ -1,0 +1,9 @@
+[
+  {"file":"03-real-private-team-create.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"私有测试团队创建表单；不是卡片执行结果"},
+  {"file":"04-real-cardhelp-code.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实 CardHelp 主题源码编辑器"},
+  {"file":"05-real-global-instructions.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实全局 Instructions 输入区域"},
+  {"file":"06-real-node-prompt.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实节点 Prompt 已修正为 riskNotes text 对象数组"},
+  {"file":"07-real-teams-review-card.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"专用实验频道真实投递的三按钮卡片，不代表 Planner 任务已创建"},
+  {"file":"08-real-card-response-received.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"批准按钮首次提交后，wait 动作更新原消息"},
+  {"file":"09-real-card-flow-success.png","product":"Power Automate","method":"Playwright + Microsoft Edge","evidence":"仅手动触发器与卡片 wait 动作的真实运行成功状态"}
+]
