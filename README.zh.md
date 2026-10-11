@@ -3,9 +3,6 @@
 [English](README.md) | [简体中文](README.zh.md)
 
 本工作坊围绕 Microsoft Copilot Studio、Power Automate、Microsoft 365 连接器、MCP 和检索增强生成（RAG），逐步构建业务智能体。四个实验方向包含五份手册：Lab 04 拆分为两个企业场景。
-
-每个实验提供 Markdown 手册、关键步骤截图，以及提示词、配置样例、代码或教学数据。浏览器证据由 **Playwright + Microsoft Edge** 获取。手册区分真实产品截图、官方文档截图和模拟夹具；这些内容不能被误认为未完成集成已经成功的证据。
-
 截图保留相关产品步骤与执行证据。发布前未完成全面的截图隐私检查。
 
 ## 实验导航

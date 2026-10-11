@@ -4,8 +4,6 @@
 
 A step-by-step workshop for building business agents with Microsoft Copilot Studio, Power Automate, Microsoft 365 connectors, MCP, and retrieval-augmented generation (RAG). The four lab tracks contain five manuals: Lab 04 is split into two enterprise scenarios.
 
-Each lab provides a Markdown manual, screenshots of key steps, and supporting prompts, configuration examples, code, or teaching data. Browser evidence was captured with **Playwright and Microsoft Edge**. Real product screenshots, official documentation screenshots, and simulated fixtures are distinguished within the manuals; none should be mistaken for proof that an unfinished integration works.
-
 Screenshots retain the product steps and execution evidence. A comprehensive screenshot privacy review was not completed before publication.
 
 ## Lab Guide
