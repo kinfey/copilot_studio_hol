@@ -71,6 +71,8 @@ lab-04-02/            合同合规与审计报告
 
 可浏览[英文网站](https://kinfey.github.io/copilot_studio_hol/)或[中文网站](https://kinfey.github.io/copilot_studio_hol/index.zh.html)。网站将实验介绍与五份实验手册生成双语 HTML，提供实验导航、页内目录、截图与附件下载。
 
+文档布局参考 [Let's Learn Microsoft KARS](https://kinfey.github.io/LetsLearnMicrosoftKars/)，采用固定顶栏、左侧实验导航、中间正文与右侧目录，并提供文档搜索、颜色主题切换、移动端菜单和上下实验导航。
+
 Markdown 手册是内容源。推送到 `main` 时，[.github/workflows/pages.yml](.github/workflows/pages.yml)会自动构建并部署网站，不要直接编辑生成的 HTML。
 
 使用 Node.js 22 或更高版本在本地生成相同网站：

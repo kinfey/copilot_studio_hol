@@ -71,6 +71,8 @@ Each lab contains `README.md` and `README.zh.md`, plus its own supporting assets
 
 Browse the [English website](https://kinfey.github.io/copilot_studio_hol/) or [Chinese website](https://kinfey.github.io/copilot_studio_hol/index.zh.html). The site provides the workshop introduction and all five labs as bilingual HTML pages, with lab navigation, a page contents list, screenshots, and downloadable attachments.
 
+The documentation layout follows [Let's Learn Microsoft KARS](https://kinfey.github.io/LetsLearnMicrosoftKars/): a fixed header, lab sidebar, central article, and right-hand contents list. It also provides document search, a color-theme toggle, mobile navigation, and previous/next lab links.
+
 The Markdown manuals are the source of truth. A push to `main` runs [.github/workflows/pages.yml](.github/workflows/pages.yml) to build and deploy the site; do not edit generated HTML directly.
 
 To generate the same site locally with Node.js 22 or later:

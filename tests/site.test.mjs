@@ -15,10 +15,13 @@ test("all twelve bilingual pages contain navigation, content, and theme support"
       const html = await fs.readFile(path.join(site, folder, language === "zh" ? "index.zh.html" : "index.html"), "utf8");
       assert.match(html, new RegExp(`<html lang="${language === "zh" ? "zh-CN" : "en"}">`));
       assert.match(html, /data-theme/);
-      assert.match(html, /<main id="main">/);
-      assert.match(html, /<article>[\s\S]*?<h1 /);
+      assert.match(html, /<main id="main"/);
+      assert.match(html, /<article class="article">[\s\S]*?<h1 /);
       assert.match(html, /href="index.zh.html"/);
       assert.match(html, /href="index.html"/);
+      assert.match(html, /class="article-toc"/);
+      assert.match(html, /id="search-input"/);
+      assert.match(html, /id="theme-toggle"/);
       if (folder) assert.ok((html.match(/<h2 /g) ?? []).length >= 7);
     }
   }
@@ -48,7 +51,7 @@ test("every local HTML link, screenshot, download, and anchor resolves", async (
 test("Chinese bold labels render without changing code examples", async () => {
   const html = await fs.readFile(path.join(site, "lab-02/index.zh.html"), "utf8");
   assert.ok(html.includes("<strong>场景：</strong>"));
-  assert.ok(!html.includes("**场景：**"));
+  assert.ok(!html.match(/<article[\s\S]*?<\/article>/)[0].includes("**场景：**"));
   const sales = await fs.readFile(path.join(site, "lab-01/index.zh.html"), "utf8");
   assert.ok(sales.includes("&lt;br&gt;"));
 });
