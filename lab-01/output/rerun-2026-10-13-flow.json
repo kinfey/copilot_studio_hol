@@ -1,0 +1,16 @@
+{
+  "kind": "actual-cloud-flow-run",
+  "startedLocal": "2026-10-13 17:25 UTC+8",
+  "status": "Failed",
+  "actions": {
+    "Recurrence": "Succeeded",
+    "ListSales": "Succeeded",
+    "RunScript": {
+      "status": "Failed",
+      "httpStatus": 404,
+      "error": "Operation not found",
+      "operation": "RunScriptProd"
+    }
+  },
+  "downstreamExecuted": false
+}

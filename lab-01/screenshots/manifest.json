@@ -2,7 +2,7 @@
   "capturedAt": "2026-10-11T10:19:11.584Z",
   "browser": "Microsoft Edge",
   "channel": "msedge",
-  "notice": "保留公开 Microsoft Learn 文档截图；本地演示页面及其截图已删除",
+  "notice": "Historical public-documentation screenshots and dated real-product rerun evidence; captions distinguish configuration, actual calls, failures and incomplete workflows.",
   "images": [
     {
       "file": "11-official-recurrence.png",
@@ -21,6 +21,141 @@
       "source": "microsoft-learn-public-documentation",
       "url": "https://learn.microsoft.com/en-us/connectors/microsoftcopilotstudio/",
       "caption": "Microsoft Learn 公开官方文档页面，非登录租户配置"
+    },
+    {
+      "file": "rerun-2026-10-13-02-recurrence.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:20:55.178Z",
+      "runDate": "2026-10-13",
+      "evidence": "Rerun inspected actual recurrence settings; not an execution result."
+    },
+    {
+      "file": "rerun-2026-10-13-03-script-inputs.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:21:31.201Z",
+      "runDate": "2026-10-13",
+      "evidence": "Office Script configured against uploaded sales.xlsx with fixed classroom date and dataAsOf; configuration only."
+    },
+    {
+      "file": "rerun-2026-10-13-05-prompt-test.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:25:09.175Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual cloud SalesWeeklySummary Prompt returned JSON; 112000 CNY, six orders, 91 units, 86.67 percent. Prompt test is not a flow or Agent test."
+    },
+    {
+      "file": "rerun-2026-10-13-06-prompt-corrected.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:26:14.325Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual retest corrected percent-versus-percentage-point wording and fixed UTC+8 snapshot limitation."
+    },
+    {
+      "file": "rerun-2026-10-13-07-help-test.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:26:45.476Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual help-topic response, distinct from automatic reporting flow."
+    },
+    {
+      "file": "rerun-2026-10-13-08-flow-failed.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:27:56.067Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual rerun: Excel list rows succeeded; Office Script failed with NotFound. No downstream Agent, Word or Outlook actions were executed."
+    },
+    {
+      "file": "rerun-2026-10-13-09-missing-input.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:28:04.522Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual missing-input rerun. Conversational clarification does not satisfy deterministic machine-error acceptance."
+    },
+    {
+      "file": "rerun-2026-10-13-10-script-notfound.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:29:25.277Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual Run script error NotFound. Response headers, cookies and identifiers are intentionally excluded."
+    },
+    {
+      "file": "rerun-2026-10-13-01-schedule-off.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:29:48.644Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual final status of sales schedule; must be Off after classroom rerun."
+    },
+    {
+      "file": "rerun-2026-10-13-11-agent-action-search.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:37:19.306Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual classic-designer search for Execute Agent and wait; inspect results, not an invocation."
+    },
+    {
+      "file": "rerun-2026-10-13-12-connector-search.png",
+      "source": "https://make.preview.powerautomate.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T09:38:08.308Z",
+      "runDate": "2026-10-13",
+      "evidence": "Broader connector search in classic designer; no Agent execution has been added or called."
+    },
+    {
+      "file": "rerun-2026-10-13-14-external-refused.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T10:07:28.509Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual independent Studio Test: external-refused. No actual email operation was invoked."
+    },
+    {
+      "file": "rerun-2026-10-13-15-injection.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T10:09:49.592Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual completed report JSON for the input-injection case, cropped to the final message; untrusted text remains data and no email operation was invoked."
+    },
+    {
+      "file": "rerun-2026-10-13-04-agent-normal.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T10:10:29.408Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual completed report JSON for agent-normal, cropped to the final reply; full parsed output is in the corresponding execution JSON. No actual email operation."
+    },
+    {
+      "file": "rerun-2026-10-13-13-zero-previous.png",
+      "source": "https://copilotstudio.preview.microsoft.com",
+      "kind": "actual-product-rerun",
+      "method": "Playwright + Microsoft Edge",
+      "capturedAt": "2026-10-13T10:10:50.024Z",
+      "runDate": "2026-10-13",
+      "evidence": "Actual completed report JSON for zero-previous, cropped to the final reply; full parsed output is in the corresponding execution JSON. No actual email operation."
     }
   ],
   "version": "155.0.4283.45",

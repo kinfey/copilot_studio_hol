@@ -6,6 +6,8 @@
 
 ## Step One: Distinguish Simulation from a Real MCP Connection
 
+> **Rerun — 2026-10-13:** Playwright controlled Microsoft Edge and reused the existing Workshop agent. The direct coupon question, five independent simulation cases, and two transaction-boundary questions were actually executed. No real coupons, claims, orders, or payments were requested through an external tool.
+
 1. The simulation path does not require a token or access a personal consumer account.
 2. The teaching burger costs CNY 12 and the coffee CNY 6. Teaching coupons demonstrate only the “already held” and “available to claim” categories. They do not affect the calculation and are not today's McDonald's prices or real offers.
 3. A real query requires a successfully bound MCP server and actual tool results. An agent response, a connector definition, or a successful simulation does not prove MCP connectivity.
@@ -21,6 +23,8 @@
 4. Keep generative orchestration enabled to select `SimulateMeal` by its topic description. Do not add a Teams channel or external write tools.
 
 ![Actual Studio configuration: instructions for in-Studio simulation](screenshots/11-real-studio-instructions.png)
+
+![2026-10-13: existing simulation and real-query boundaries inspected](screenshots/rerun-2026-10-13-01-instructions.png)
 
 **Completion check:** The agent does not promise automatic reminders or request keys, addresses, or payment information.
 
@@ -53,6 +57,14 @@ Answer the topic's three Question nodes in this order:
 
 **Completion check:** `1.5` burgers, negative quantities, or zero quantities for both items cannot produce a valid quote.
 
+**Actual question-by-question rerun:** Start a new session, enter `模拟订餐`, wait for the burger question, submit `1`, wait for the coffee question, submit `1`, wait for the budget question, then submit `25`. Do not send all three answers before their respective new questions.
+
+![2026-10-13: simulation introduction and burger question](screenshots/rerun-2026-10-13-04-burger-question.png)
+
+![2026-10-13: burger answer followed by the coffee question](screenshots/rerun-2026-10-13-05-question.png)
+
+![2026-10-13: coffee answer followed by the budget question](screenshots/rerun-2026-10-13-06-question.png)
+
 ## Step Five: Calculate the Price with Power Fx
 
 The Set variable node assigns:
@@ -74,6 +86,10 @@ Topic.TotalYuan <= Topic.BudgetYuan
 
 **Completion check:** The calculation comes from topic nodes, not the model's free-form arithmetic.
 
+![2026-10-13: actual 1-burger/1-coffee/25-yuan result, 18 yuan within budget](screenshots/rerun-2026-10-13-07-within-budget.png)
+
+See the [actual independent conversation](output/rerun-2026-10-13-within-budget.json). This is a real execution of the Studio simulation topic, not a real McDonald's order.
+
 ## Step Six: Directly Test “What Coupons Are Available Today?”
 
 1. Open **Test**. If an earlier conversation is still waiting for an answer inside the simulation topic, expand the test pane and select **New test session**. Do not use the canvas zoom Reset control.
@@ -86,6 +102,10 @@ Topic.TotalYuan <= Topic.BudgetYuan
 
 **Observed result:** The agent replied “当前MCP尚未连通，无法查询今天的真实优惠券” (“MCP is not connected, so today's real coupons cannot be queried”) and did not enter simulated ordering. See the [actual test record](output/today-coupons-test.real.json). This verifies routing and explicit failure reporting, **not successful MCP connectivity**. Continue with Steps Eight and Nine to resolve the connection.
 
+![2026-10-13: direct coupon question again reports unavailable real MCP](screenshots/rerun-2026-10-13-02-coupons-test.png)
+
+The [new live conversation](output/rerun-2026-10-13-coupons.json) did not ask for meal quantities or return actual coupons. Offering a separate simulation is not successful MCP retrieval.
+
 ## Step Seven: Validate Exception Branches
 
 Start each independent conversation with **New test session**, or finish the current topic before triggering it again. Wait for the current conversation's new question before sending an answer; do not match an old question and send consecutive answers prematurely.
@@ -96,9 +116,24 @@ Start each independent conversation with **New test session**, or finish the cur
 | 1, 1, 10 | CNY 18 total, over budget |
 | 1.5, 1, 25 | Invalid quantity; stop the estimate |
 | 0, 0, 25 | Require at least one item; stop the estimate |
+| -1, 1, 25 | Invalid negative quantity; stop the estimate |
 | “领取教学券” (“claim a teaching coupon”) or “确认支付” (“confirm payment”) | Explain the simulation boundary; do not write to an account |
 
-As requested, the latest test queried real coupons only and did not run simulated ordering. The earlier normal simulation case was completed. Over-budget and invalid-quantity cases still need independent live conversation tests; code checks are not cloud execution evidence.
+**2026-10-13:** All five numeric cases were run in separate actual Studio conversations. The within-budget result is above; the other four results are below. Fractional, empty-cart, and negative cases explicitly stop the estimate. “Claim a teaching coupon” explains that teaching coupons cannot be claimed/redeemed and offers the simulation questions; “confirm payment” explicitly refuses real payment. No external transaction tool is bound.
+
+![2026-10-13: 18 yuan exceeds the 10-yuan budget](screenshots/rerun-2026-10-13-07-over-budget.png)
+
+![2026-10-13: fractional burger quantity rejected](screenshots/rerun-2026-10-13-07-fractional.png)
+
+![2026-10-13: empty cart rejected](screenshots/rerun-2026-10-13-07-empty-cart.png)
+
+![2026-10-13: negative quantity rejected](screenshots/rerun-2026-10-13-07-negative.png)
+
+![2026-10-13: teaching coupon boundary, not a real claim](screenshots/rerun-2026-10-13-08-claim-refused.png)
+
+![2026-10-13: real-payment request refused](screenshots/rerun-2026-10-13-08-payment-refused.png)
+
+Complete live records: [over budget](output/rerun-2026-10-13-over-budget.json), [fractional](output/rerun-2026-10-13-fractional.json), [empty cart](output/rerun-2026-10-13-empty-cart.json), [negative](output/rerun-2026-10-13-negative.json), [claim boundary](output/rerun-2026-10-13-claim-refused.json), [payment refusal](output/rerun-2026-10-13-payment-refused.json). These are cloud conversations, separate from the local code checks.
 
 ![Earlier actual Studio simulation: one burger and one coffee, CNY 25 budget, CNY 18 total](screenshots/12-real-studio-budget-pass.png)
 
@@ -117,11 +152,15 @@ This step diagnoses the real service and **does not affect the internal simulati
 
 ![Actual Agent Tools: no tools added yet](screenshots/16-real-agent-no-tools.png)
 
+![2026-10-13: Tools still shows Create your first tool, no MCP bound](screenshots/rerun-2026-10-13-03-no-mcp-tools.png)
+
 ![Official integration documentation: endpoint and authentication header](screenshots/01-official-mcd-endpoint.png)
 
 **Completion check:** Four layers of evidence are required: personal connection created successfully → selected and bound to the agent → successful tools/list → actual read-only call results. Currently, only the connector definition exists; no real tool list or coupon results have been obtained.
 
 ## Step Nine: Resolve the DLP Block on Connection Creation
+
+**Rerun boundary:** The DLP error below is historical evidence. This rerun checked current tool absence and the failed real-query path; it did not recreate a personal connection, re-enter credentials, or newly verify the DLP policy. An approved existing connection and binding are required before a real read-only call can be executed.
 
 Previously, **Create connection** was selected on the existing connector. After the user entered credentials personally, the product explicitly returned:
 
@@ -163,13 +202,15 @@ The current [tool configuration](config/tool-policy.json) has `enabled=[]`, indi
 | SimulateMeal topic | Saved; zero Topic checker errors |
 | Direct question about today's coupons | Tested; explicitly reports MCP is disconnected, without entering simulated ordering |
 | One burger plus one coffee, CNY 25 budget | Actual Test returned CNY 18 and a no-transaction disclaimer |
-| Independent over-budget and invalid-quantity conversations | Live tests pending; branches exist in the topic |
+| Independent over-budget and invalid-quantity conversations | 2026-10-13 actual separate conversations passed over-budget, fractional, empty-cart, and negative cases |
 | MCP connector definition | Actually exists |
 | MCP binding and real coupon queries | Not connected; earlier connection creation was blocked by DLP |
 | Teams and daily 08:00 notifications | Cancelled; not enabled |
 | Real coupon claims, orders, and payments | Not executed |
 
 Screenshot sources are in [manifest.json](screenshots/manifest.json). Historical screenshots demonstrate the configuration or error at the time, not current connectivity.
+
+[Dated rerun provenance](screenshots/rerun-2026-10-13.json) records the new real-product screenshots. MCP tool listing and real coupon retrieval remain unexecuted because there is no bound connection; simulation success must not replace that missing evidence.
 
 ## Official References
 

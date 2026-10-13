@@ -1,0 +1,12 @@
+{
+  "kind": "actual-teams-wait-card-flow-response",
+  "data": {
+    "assigneeKey": "self",
+    "reviewComment": "教学测试：请补充验收标准，不创建任务。",
+    "decision": "reject",
+    "requestId": "LAB02-REQ-001"
+  },
+  "taskCreated": false,
+  "reminderSent": false,
+  "serverValidationImplemented": false
+}

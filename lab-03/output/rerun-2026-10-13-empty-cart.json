@@ -1,0 +1,13 @@
+{
+  "name": "empty-cart",
+  "input": [
+    "模拟订餐",
+    "0",
+    "0",
+    "25"
+  ],
+  "expected": "输入不合法",
+  "passed": true,
+  "transcript": "Bot said:\n\nHello, I'm Workshop-McDCouponAgent-Lab03. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:30 PM\nJust now\nBot said: Hello, I'm Workshop-McDCouponAgent-Lab03. How can I help? Message is interactive. Click to interact.\nYou said:\n\n模拟订餐\n\nYou said: 模拟订餐\nBot said:\n\n离线教学模拟：汉堡12元、咖啡6元。虚构优惠券：教学咖啡体验券（模拟已持有）、教学套餐体验券（模拟可领取）。这些不是今日真实优惠，不能领取或核销，也不参加本次算价。\n\nLike\nDislike\nSent at October 13 at 5:31 PM\nBot said: 离线教学模拟：汉堡12元、咖啡6元。虚构优惠券：教学咖啡体验券（模拟已持有）、教学套餐体验券（模拟可领取）。这些不是今日真实优惠，不能领取或核销，也不参加本次算价。\nBot said:\n\n请输入教学汉堡数量（0至10整数）：\n\nLike\nDislike\nSent at October 13 at 5:31 PM\nJust now\nBot said: 请输入教学汉堡数量（0至10整数）： Message is interactive. Click to interact.\nYou said:\n\n0\n\nYou said: 0\nBot said:\n\n请输入教学咖啡数量（0至10整数）：\n\nLike\nDislike\nSent at October 13 at 5:31 PM\nJust now\nBot said: 请输入教学咖啡数量（0至10整数）： Message is interactive. Click to interact.\nYou said:\n\n0\n\nYou said: 0\nBot said:\n\n请输入预算（元，0至1000整数）：\n\nLike\nDislike\nSent at October 13 at 5:31 PM\nJust now\nBot said: 请输入预算（元，0至1000整数）： Message is interactive. Click to interact.\nYou said:\n\n25\n\nYou said: 25\nBot said:\n\n输入不合法：数量须为0至10整数且至少选择一件，预算须为0至1000整数（元）。本次停止试算；请重新输入“模拟订餐”。未创建真实订单，未扣款，未核销优惠券。\n\nLike\nDislike\nSent at October 13 at 5:31 PM\nJust now\nBot said: 输入不合法：数量须为0至10整数且至少选择一件，预算须为0至1000整数（元）。本次停止试算；请重新输入“模拟订餐”。未创建真实订单，未扣款，未核销优惠券。 Message is interactive. Click to interact.\nBot said:\n\nAnalyzing data...\n\nBot said:",
+  "kind": "actual-studio-topic-test"
+}

@@ -1,0 +1,5 @@
+{
+  "kind": "actual-agent-test",
+  "input": "解释周报口径",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-SalesWeeklyAgent. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:26 PM\nJust now\nBot said: Hello, I'm Workshop-SalesWeeklyAgent. How can I help? Message is interactive. Click to interact.\nYou said:\n\n解释周报口径\n\nYou said: 解释周报口径\nBot said:\n\n本周周一至报告日的已完成订单，对比上周同星期截止日。金额由 Office Script 计算，Prompt 只提取指标并写摘要；我不直接发送邮件，Outlook 默认生成草稿。\n\nLike\nDislike\nSent at October 13 at 5:26 PM\nJust now\nBot said: 本周周一至报告日的已完成订单，对比上周同星期截止日。金额由 Office Script 计算，Prompt 只提取指标并写摘要；我不直接发送邮件，Outlook 默认生成草稿。 Message is interactive. Click to interact."
+}

@@ -1,0 +1,7 @@
+{
+  "kind": "actual-native-knowledge-baseline",
+  "input": "AtlasGateway 2.1 轮换证书后出现 AGW-401，如何排查，何时升级？",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-ITHelpdeskAgent-Lab04. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:34 PM\nJust now\nBot said: Hello, I'm Workshop-ITHelpdeskAgent-Lab04. How can I help? Message is interactive. Click to interact.\nYou said:\n\nAtlasGateway 2.1 轮换证书后出现 AGW-401，如何排查，何时升级？\n\nYou said: AtlasGateway 2.1 轮换证书后出现 AGW-401，如何排查，何时升级？\nBot said:\n\nCould you please provide the SanitizedLog?\n\nLike\nDislike\nSent at October 13 at 5:34 PM\nJust now\nBot said: Could you please provide the SanitizedLog?",
+  "customSearchExecuted": false,
+  "incidentCreated": false
+}

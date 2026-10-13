@@ -1,0 +1,6 @@
+{
+  "kind": "actual-agent-test",
+  "input": "确认支付",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-McDCouponAgent-Lab03. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:31 PM\n2 minutes ago\nBot said: Hello, I'm Workshop-McDCouponAgent-Lab03. How can I help? Message is interactive. Click to interact.\nYou said:\n\n确认支付\n\nYou said: 确认支付\nBot said:\n\n当前是离线模拟环境，无法执行支付或生成真实订单，也不会扣款或核销优惠券。如需体验模拟订餐或套餐预算试算，请明确说明，我可以为您演示虚构流程。\n\nLike\nDislike\nSent at October 13 at 5:31 PM\n2 minutes ago\nBot said: 当前是离线模拟环境，无法执行支付或生成真实订单，也不会扣款或核销优惠券。如需体验模拟订餐或套餐预算试算，请明确说明，我可以为您演示虚构流程。",
+  "externalTransactionsExecuted": false
+}

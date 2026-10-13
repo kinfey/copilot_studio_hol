@@ -1,0 +1,5 @@
+{
+  "kind": "actual-agent-test",
+  "input": "卡片上的按钮是什么意思",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-TaskReviewAgent-Lab02. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:41 PM\nJust now\nBot said: Hello, I'm Workshop-TaskReviewAgent-Lab02. How can I help? Message is interactive. Click to interact.\nYou said:\n\n卡片上的按钮是什么意思\n\nYou said: 卡片上的按钮是什么意思\nBot said:\n\n批准使用默认负责人创建任务；打回必须说明原因，不创建任务；指派任务表示批准并选择白名单负责人。截止时间不等于提醒。Planner 的提醒由独立流程发送，To-Do 提醒属于当前连接账号。\n\nLike\nDislike\nSent at October 13 at 5:41 PM\nJust now\nBot said: 批准使用默认负责人创建任务；打回必须说明原因，不创建任务；指派任务表示批准并选择白名单负责人。截止时间不等于提醒。Planner 的提醒由独立流程发送，To-Do 提醒属于当前连接账号。"
+}

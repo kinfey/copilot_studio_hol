@@ -1,0 +1,55 @@
+{
+  "kind": "actual-agent-test",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-SalesWeeklyAgent. How can I help?\n\nLike\nDislike\nSent at October 13 at 6:10 PM\nJust now\nBot said: Hello, I'm Workshop-SalesWeeklyAgent. How can I help? Message is interactive. Click to interact.\nYou said:\n\nWEEKLY_SALES_REPORT\n\n{\"reportDate\":\"2026-10-09\",\"weekStart\":\"2026-10-05\",\"previousWeekStart\":\"2026-09-28\",\"cutoff\":\"2026-10-09\",\"currency\":\"CNY\",\"orderCount\":6,\"units\":91,\"revenueCNY\":112000,\"previousRevenueCNY\":0,\"wowPercent\":null,\"topRegion\":{\"name\":\"华东\",\"revenueCNY\":47000},\"topProduct\":{\"name\":\"订阅B\",\"revenueCNY\":63000},\"regionRevenue\":[{\"name\":\"华东\",\"revenueCNY\":47000},{\"name\":\"华南\",\"revenueCNY\":38000},{\"name\":\"华北\",\"revenueCNY\":27000}],\"excludedPending\":1,\"sourceRowCount\":16,\"dataAsOf\":\"2026-10-09T09:00:00Z\"}\n\nYou said: WEEKLY_SALES_REPORT {\"reportDate\":\"2026-10-09\",\"weekStart\":\"2026-10-05\",\"previousWeekStart\":\"2026-09-28\",\"cutoff\":\"2026-10-09\",\"currency\":\"CNY\",\"orderCount\":6,\"units\":91,\"revenueCNY\":112000,\"previousRevenueCNY\":0,\"wowPercent\":null,\"topRegion\":{\"name\":\"华东\",\"revenueCNY\":47000},\"topProduct\":{\"name\":\"订阅B\",\"revenueCNY\":63000},\"regionRevenue\":[{\"name\":\"华东\",\"revenueCNY\":47000},{\"name\":\"华南\",\"revenueCNY\":38000},{\"name\":\"华北\",\"revenueCNY\":27000}],\"excludedPending\":1,\"sourceRowCount\":16,\"dataAsOf\":\"2026-10-09T09:00:00Z\"}\nBot said:\n\n{\"reportDate\":\"2026-10-09\",\"revenueCNY\":112000,\"orderCount\":6,\"units\":91,\"previousRevenueCNY\":0,\"wowPercent\":null,\"topRegion\":{\"name\":\"华东\",\"revenueCNY\":47000},\"topProduct\":{\"name\":\"订阅B\",\"revenueCNY\":63000},\"summary\":\"截至2026-10-09的销售周报显示，本期实现销售收入112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区贡献最高收入47000元，订阅B为本期销售额最高产品，收入63000元。数据统计口径为2026-10-05至2026-10-09期间已完成订单，数据快照时间为2026-10-09 17:00（UTC+8）。\",\"risks\":[{\"text\":\"日期列无交易时间戳，本报告只代表读取快照。\"}],\"nextActions\":[{\"text\":\"持续监控各区域销售表现，重点关注华东和华南市场。\"},{\"text\":\"加强订阅B产品的市场推广，提升销售转化率。\"},{\"text\":\"完善数据采集流程，争取获取更精确的订单时间信息。\"}],\"emailSubject\":\"2026-10-09销售周报\",\"emailBody\":\"关键指标：本期销售收入为112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区和订阅B产品表现突出，分别贡献47000元和63000元。\\n风险提示：本报告基于2026-10-09 17:00（UTC+8）数据快照，日期列无交易时间戳，可能存在数据时效性限制。\\n下周建议：建议持续关注重点区域和产品销售情况，加强市场推广，并优化数据采集以提升报告准确性。\",\"pptOutline\":[{\"title\":\"业绩概览\",\"body\":\"本期销售收入112000元，订单数6单，销售单位91件。环比增长不可计算，因上期销售收入为零。\"},{\"title\":\"销售分布\",\"body\":\"华东地区贡献最高收入47000元，华南和华北分别为38000元和27000元。订阅B为销售额最高产品，收入63000元。\"},{\"title\":\"后续行动\",\"body\":\"重点关注华东和华南市场，强化订阅B产品推广，完善数据采集流程以提升数据质量。\"}]}\n\nLike\nDislike\nSent at October 13 at 6:10 PM\nJust now\nBot said: {\"reportDate\":\"2026-10-09\",\"revenueCNY\":112000,\"orderCount\":6,\"units\":91,\"previousRevenueCNY\":0,\"wowPercent\":null,\"topRegion\":{\"name\":\"华东\",\"revenueCNY\":47000},\"topProduct\":{\"name\":\"订阅B\",\"revenueCNY\":63000},\"summary\":\"截至2026-10-09的销售周报显示，本期实现销售收入112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区贡献最高收入47000元，订阅B为本期销售额最高产品，收入63000元。数据统计口径为2026-10-05至2026-10-09期间已完成订单，数据快照时间为2026-10-09 17:00（UTC+8）。\",\"risks\":[{\"text\":\"日期列无交易时间戳，本报告只代表读取快照。\"}],\"nextActions\":[{\"text\":\"持续监控各区域销售表现，重点关注华东和华南市场。\"},{\"text\":\"加强订阅B产品的市场推广，提升销售转化率。\"},{\"text\":\"完善数据采集流程，争取获取更精确的订单时间信息。\"}],\"emailSubject\":\"2026-10-09销售周报\",\"emailBody\":\"关键指标：本期销售收入为112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区和订阅B产品表现突出，分别贡献47000元和63000元。\\n风险提示：本报告基于2026-10-09 17:00（UTC+8）数据快照，日期列无交易时间戳，可能存在数据时效性限制。\\n下周建议：建议持续关注重点区域和产品销售情况，加强市场推广，并优化数据采集以提升报告准确性。\",\"pptOutline\":[{\"title\":\"业绩概览\",\"body\":\"本期销售收入112000元，订单数6单，销售单位91件。环比增长不可计算，因上期销售收入为零。\"},{\"title\":\"销售分布\",\"body\":\"华东地区贡献最高收入47000元，华南和华北分别为38000元和27000元。订阅B为销售额最高产品，收入63000元。\"},{\"title\":\"后续行动\",\"body\":\"重点关注华东和华南市场，强化订阅B产品推广，完善数据采集流程以提升数据质量。\"}]}",
+  "response": {
+    "reportDate": "2026-10-09",
+    "revenueCNY": 112000,
+    "orderCount": 6,
+    "units": 91,
+    "previousRevenueCNY": 0,
+    "wowPercent": null,
+    "topRegion": {
+      "name": "华东",
+      "revenueCNY": 47000
+    },
+    "topProduct": {
+      "name": "订阅B",
+      "revenueCNY": 63000
+    },
+    "summary": "截至2026-10-09的销售周报显示，本期实现销售收入112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区贡献最高收入47000元，订阅B为本期销售额最高产品，收入63000元。数据统计口径为2026-10-05至2026-10-09期间已完成订单，数据快照时间为2026-10-09 17:00（UTC+8）。",
+    "risks": [
+      {
+        "text": "日期列无交易时间戳，本报告只代表读取快照。"
+      }
+    ],
+    "nextActions": [
+      {
+        "text": "持续监控各区域销售表现，重点关注华东和华南市场。"
+      },
+      {
+        "text": "加强订阅B产品的市场推广，提升销售转化率。"
+      },
+      {
+        "text": "完善数据采集流程，争取获取更精确的订单时间信息。"
+      }
+    ],
+    "emailSubject": "2026-10-09销售周报",
+    "emailBody": "关键指标：本期销售收入为112000元，订单数6单，销售单位91件。由于上期销售收入为零，环比增长不可计算。华东地区和订阅B产品表现突出，分别贡献47000元和63000元。\n风险提示：本报告基于2026-10-09 17:00（UTC+8）数据快照，日期列无交易时间戳，可能存在数据时效性限制。\n下周建议：建议持续关注重点区域和产品销售情况，加强市场推广，并优化数据采集以提升报告准确性。",
+    "pptOutline": [
+      {
+        "title": "业绩概览",
+        "body": "本期销售收入112000元，订单数6单，销售单位91件。环比增长不可计算，因上期销售收入为零。"
+      },
+      {
+        "title": "销售分布",
+        "body": "华东地区贡献最高收入47000元，华南和华北分别为38000元和27000元。订阅B为销售额最高产品，收入63000元。"
+      },
+      {
+        "title": "后续行动",
+        "body": "重点关注华东和华南市场，强化订阅B产品推广，完善数据采集流程以提升数据质量。"
+      }
+    ]
+  },
+  "schemaValidated": true,
+  "emailSent": false
+}

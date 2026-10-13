@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-13",
+  "browser": "Microsoft Edge",
+  "automation": "Playwright over CDP",
+  "screenshots": [
+    {
+      "file": "rerun-2026-10-13-01-instructions.png",
+      "capturedAt": "2026-10-13T09:34:06.500Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual reopened Helpdesk agent instructions during rerun."
+    },
+    {
+      "file": "rerun-2026-10-13-03-knowledge-test.png",
+      "capturedAt": "2026-10-13T09:34:35.234Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual native knowledge query response; no controlled retrieval, ServiceNow or Teams call verified."
+    },
+    {
+      "file": "rerun-2026-10-13-04-prompt-test.png",
+      "capturedAt": "2026-10-13T09:35:55.567Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual rerun of Helpdesk query rewrite Prompt: three validated distinct queries; not a search execution."
+    },
+    {
+      "file": "rerun-2026-10-13-05-log-upload.png",
+      "capturedAt": "2026-10-13T09:36:08.698Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual Test-pane attempt to upload synthetic error.log; inspect support/error status, not a knowledge upload."
+    },
+    {
+      "file": "rerun-2026-10-13-06-log-result.png",
+      "capturedAt": "2026-10-13T09:36:31.390Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual response after submitting error.log as user input. Does not verify controlled SearchKnowledge, ServiceNow or Teams."
+    },
+    {
+      "file": "rerun-2026-10-13-07-log-text-result.png",
+      "capturedAt": "2026-10-13T09:36:56.073Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual response after supplying SanitizedLog as text; attachment-to-text tool was not implemented."
+    },
+    {
+      "file": "rerun-2026-10-13-09-tools.png",
+      "capturedAt": "2026-10-13T10:06:31.651Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual loaded Helpdesk Tools list; RewriteHelpdeskQueriesLab04 is visible. No controlled retrieval, ServiceNow or Teams write result is demonstrated."
+    },
+    {
+      "file": "rerun-2026-10-13-08-native-knowledge-result.png",
+      "capturedAt": "2026-10-13T10:11:19.831Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual completed native-knowledge-test, cropped to final reply rather than virtualized chat padding. This is native knowledge, not controlled Azure retrieval or an external write."
+    },
+    {
+      "file": "rerun-2026-10-13-02-knowledge-ready.png",
+      "capturedAt": "2026-10-13T10:15:51.477Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual existing runbook.clean.md knowledge row with Ready status, after widening viewport to include the status column. Native uploaded knowledge, not a custom Azure index."
+    }
+  ]
+}

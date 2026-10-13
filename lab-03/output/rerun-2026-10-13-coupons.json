@@ -1,0 +1,5 @@
+{
+  "kind": "actual-agent-test",
+  "input": "今天有什么优惠券",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-McDCouponAgent-Lab03. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:28 PM\nJust now\nBot said: Hello, I'm Workshop-McDCouponAgent-Lab03. How can I help? Message is interactive. Click to interact.\nYou said:\n\n今天有什么优惠券\n\nYou said: 今天有什么优惠券\nBot said:\n\n当前是离线模拟，无法查询今日真实优惠。由于当前MCP尚未连通，无法查询今天的真实优惠券。如需模拟订餐体验或教学套餐预算试算，请明确说明，我可以为您提供虚构菜单和示例优惠券，仅供学习参考。\n\nLike\nDislike\nSent at October 13 at 5:28 PM\nJust now\nBot said: 当前是离线模拟，无法查询今日真实优惠。由于当前MCP尚未连通，无法查询今天的真实优惠券。如需模拟订餐体验或教学套餐预算试算，请明确说明，我可以为您提供虚构菜单和示例优惠券，仅供学习参考。"
+}

@@ -7,6 +7,8 @@
 
 ## Step One: Prepare the Lab and Acceptance Baseline
 
+> **Rerun — 2026-10-13:** Playwright controlled Microsoft Edge against the existing Helpdesk agent. Native knowledge Q&A and the cloud three-question Prompt were retested. A real user-log attachment and a text retry exposed an input-binding failure; no controlled Azure search, ServiceNow write, or Teams status notification was executed.
+
 1. Sign in to Copilot Studio and Power Automate using Edge and select an authorized lab environment; do not modify business agents.
 2. The main integration requires a lab SharePoint document library, Azure AI Search, an available embedding deployment, an enabled Semantic ranker, a ServiceNow developer instance, and a dedicated standard Teams channel.
 3. Without these resources, you can still complete local preprocessing, agent knowledge uploads, and Prompt tests; you cannot mark real search, incident creation, or notifications as successful. This lab does not automatically create billable Azure resources.
@@ -39,6 +41,8 @@ Human-labeled questions and the plan for comparing each optimization dimension a
 5. PDF/Word extension: extract body text and table structure first; use organization-approved OCR for scanned PDFs. Preserve page numbers and section locations. Manually verify merged cells, charts, and tables spanning pages.
 
 **Completion check:** Headers and footers are removed; certificate-chain and binding-version tables are readable; the instruction not to disable TLS validation remains. The local script processes only the supplied Markdown/tab-separated tables; it is not a general PDF/Word parser.
+
+**Local rerun:** `prepare.mjs` was actually executed again. Its cleaned document, heading-based chunks and hybrid requests were regenerated and checked locally; none of these operations deployed an index or issued a search request.
 
 ## Step Three: Chunk by Heading and Meaning (Optimization Dimension 2)
 
@@ -85,6 +89,8 @@ Human-labeled questions and the plan for comparing each optimization dimension a
 
 ![Real Copilot Studio: Helpdesk global instructions](screenshots/01-real-agent-instructions.png)
 
+![2026-10-13: original Helpdesk instructions inspected again](screenshots/rerun-2026-10-13-01-instructions.png)
+
 3. **Knowledge → Add knowledge → Upload file**: select `output/runbook.clean.md`, then **Add to agent**.
 
 ![Real Copilot Studio: cleaned file upload](screenshots/02-real-knowledge-upload.png)
@@ -94,6 +100,16 @@ Human-labeled questions and the plan for comparing each optimization dimension a
 
 ![Real runbook.clean.md Ready status, cropped to the status cell](screenshots/08-real-knowledge-ready.png)
 
+![2026-10-13: existing runbook.clean.md knowledge row is Ready](screenshots/rerun-2026-10-13-02-knowledge-ready.png)
+
+**Actual baseline test:** The scenario question initially routed to the rewrite tool and requested SanitizedLog, rather than returning a cited answer. In a separate new session, ask: `runbook.clean.md 中的 AtlasGateway 2.1 / AGW-401 条目写了哪些排查步骤与升级条件？这是知识条目解释，不分析用户日志，不创建工单。` The completed response cites `runbook.clean.md`, checks intermediate certificates and the binding fingerprint, and escalates only after approved repair fails. It explicitly prohibits disabling TLS or requesting private keys.
+
+![2026-10-13: initial scenario question asks for SanitizedLog](screenshots/rerun-2026-10-13-03-knowledge-test.png)
+
+![2026-10-13: isolated native knowledge question returns a cited answer](screenshots/rerun-2026-10-13-08-native-knowledge-result.png)
+
+Records: [initial routing/input request](output/rerun-2026-10-13-knowledge-test.json) and [completed native baseline](output/rerun-2026-10-13-native-knowledge-test.json). Native file retrieval is not proof of custom ACLs or Azure hard prefiltering.
+
 ## Step Seven: Use a Prompt to Rewrite Three Precise Subquestions (Optimization Dimension 5)
 
 1. **Tools → Add a tool → Prompt**; name it `RewriteHelpdeskQueriesLab04`.
@@ -102,6 +118,10 @@ Human-labeled questions and the plan for comparing each optimization dimension a
 4. **Output format → JSON**, then Test. Check that `queries` contains exactly three distinct `{text}` objects, all retaining AGW-401 and AtlasGateway 2.1.
 
 ![Real Prompt test: three retrieval subquestions](screenshots/04-real-multi-query-test.png)
+
+![2026-10-13: actual three-question cloud Prompt retest](screenshots/rerun-2026-10-13-04-prompt-test.png)
+
+The [new cloud output](output/rerun-2026-10-13-queries.json) passed `validateQueries`: exactly three distinct `{text}` questions retaining AtlasGateway 2.1 / AGW-401. This is a Prompt call, not three actual search calls.
 
 5. Save → Add and configure. The real test output is saved as [queries.real.json](output/queries.real.json), separately from the [offline reference](data/queries.example.json).
 6. In the task topic's Prompt node, bind the inputs to the sanitized log and user question. If `validateQueries` fails, return an explicit error rather than silently reuse the previous question.
@@ -116,7 +136,21 @@ Human-labeled questions and the plan for comparing each optimization dimension a
 5. Present the proposed short_description, sanitized description, and requestId; add a user confirmation branch. Cancellation must not create an incident.
 6. Call only the `CreateIncident` operation fixed by the instance allowlist. The model may analyze product/error codes, but incident priority and assignment group are determined by rules or human confirmation.
 
+**Step Eight actual upload test:** Add `data/error.log` (361 bytes) to Test, then send the attachment with the analysis request. The completed reply still requests SanitizedLog. Send the complete fictional log text in that conversation; the reply says `SanitizedLog is not a valid property` and asks again. Attachment upload succeeded, but file extraction/input binding and the diagnosis workflow did **not** pass.
+
+![2026-10-13: log attachment added before sending, not a parsing result](screenshots/rerun-2026-10-13-05-log-upload.png)
+
+![2026-10-13: actual sent attachment still leads to a SanitizedLog request](screenshots/rerun-2026-10-13-06-log-result.png)
+
+![2026-10-13: complete-log text retry reports an invalid property](screenshots/rerun-2026-10-13-07-log-text-result.png)
+
+Full conversations: [attachment test](output/rerun-2026-10-13-log-upload-test.json), [text retry](output/rerun-2026-10-13-log-text-test.json). Inspect the actual tool input schema and explicitly bind sanitized extracted text before continuing; do not interpret the Prompt-editor test as proof of agent input binding.
+
 ## Step Nine: ServiceNow API and Teams Status
+
+**Step Nine rerun boundary:** The loaded Tools list contains only the query-rewrite Prompt. No SearchKnowledge, CreateIncident or Teams notification call is demonstrated, and no incident number was obtained. Authorized existing retrieval and ServiceNow lab resources and working input bindings are prerequisites; new external resources were not provisioned.
+
+![2026-10-13: actual Helpdesk Tools list contains the rewrite Prompt](screenshots/rerun-2026-10-13-09-tools.png)
 
 1. Configure approved OAuth integration and least-privilege access to the incident table in a ServiceNow **developer instance**; create a custom connector in Power Platform.
 2. Set a fixed host `<YOUR_DEV_INSTANCE>.service-now.com` and POST `/api/now/table/incident`; refer to the [request body](flows/incident-request.example.json).
@@ -138,11 +172,15 @@ Run `node --test lab-04-01/tests/rag.test.mjs` to check cleaning, chunking, thre
 |---|---|
 | Create Helpdesk agent in Edge, save instructions, and turn off Web Search | Performed in the real UI |
 | Upload cleaned runbook | Real Add to agent completed; final status Ready; not proof of custom index deployment |
-| Three-question Prompt | Tested, saved, and bound in the real UI; output saved |
-| Local cleaning, semantic chunking, retrieval requests | Files saved; no real search calls |
+| Native knowledge baseline | 2026-10-13 isolated knowledge question returned AGW-401 steps, escalation conditions and runbook.clean.md citation |
+| Three-question Prompt | 2026-10-13 actual cloud Prompt retest passed three-query validation; this does not establish working agent input binding |
+| User log attachment and text retry | Actually sent; attachment still prompted for SanitizedLog, text retry reported invalid property; extraction/binding not accepted |
+| Local cleaning, semantic chunking, retrieval requests | prepare.mjs rerun; local checks only, no real search calls |
 | SharePoint metadata, Azure index/hard filters, ServiceNow, Teams notifications | Not yet integrated or validated end to end; designated authorized lab resources are required |
 
 See [manifest.json](screenshots/manifest.json) for screenshot sources. The supplied code does not automatically deploy resources or send external requests.
+
+[Dated rerun provenance](screenshots/rerun-2026-10-13.json) identifies new screenshots. Step Four–Five deployments and Step Eight–Nine integrations remain unverified; no 10/100/500-document cloud evaluation or measured accuracy/latency is claimed.
 
 The official-document screenshot reproduction script is [capture-docs.mjs](scripts/capture-docs.mjs): run `npm run screenshots:docs` against an already running Edge CDP endpoint at `127.0.0.1:9223`. It recaptures official pages only, not fabricated product configurations or execution results; install this directory's dependencies before running.
 

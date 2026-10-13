@@ -59,6 +59,6 @@ test("手册所有本地链接都存在，截图均有来源登记", async () =>
   for (const [, link] of markdown.matchAll(/\]\(([^)]+)\)/g)) {
     if (/^https?:/.test(link)) continue;
     await fs.access(new URL(link, root));
-    if (link.startsWith("screenshots/")) assert.ok(manifest.some((entry) => `screenshots/${entry.file}` === link));
+    if (/^screenshots\/.*\.png$/.test(link)) assert.ok(manifest.some((entry) => `screenshots/${entry.file}` === link));
   }
 });

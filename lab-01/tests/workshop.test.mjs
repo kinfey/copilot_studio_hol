@@ -129,12 +129,21 @@ test("全部教材本地链接和 PNG 截图存在，浏览器明确为 Edge", a
   const manifest = JSON.parse(await fs.readFile(new URL("screenshots/manifest.json", root), "utf8"));
   assert.equal(manifest.channel, "msedge");
   assert.match(manifest.userAgent, /Edg\//);
-  assert.equal(manifest.images.length, 3);
+  const publicDocumentation = manifest.images.filter((image) => image.source === "microsoft-learn-public-documentation");
+  assert.equal(publicDocumentation.length, 3);
   for (const image of manifest.images) {
-    assert.equal(image.source, "microsoft-learn-public-documentation");
+    if (image.source !== "microsoft-learn-public-documentation") {
+      assert.equal(image.kind, "actual-product-rerun");
+      assert.match(image.method, /Playwright \+ Microsoft Edge/);
+      assert.ok(["https://copilotstudio.preview.microsoft.com", "https://make.preview.powerautomate.com"].includes(image.source));
+      assert.match(image.capturedAt, /^\d{4}-\d{2}-\d{2}T/);
+    }
     const file = await fs.readFile(new URL(`screenshots/${image.file}`, root));
     assert.deepEqual(file.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
-    assert.ok(file.length > 20000);
+    assert.ok(file.length > (image.source === "microsoft-learn-public-documentation" ? 20000 : 100));
+  }
+  for (const link of links.filter((link) => /^screenshots\/rerun-.*\.png$/.test(link))) {
+    assert.ok(manifest.images.some((image) => `screenshots/${image.file}` === link));
   }
 });
 test("只交付 Markdown 实验及配套文件，不包含本地页面", async () => {

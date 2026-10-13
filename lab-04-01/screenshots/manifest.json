@@ -1,9 +1,129 @@
 [
-  {"file":"01-real-agent-instructions.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"Helpdesk 全局指令编辑区域"},
-  {"file":"02-real-knowledge-upload.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"runbook.clean.md 上传表单，不是自定义检索执行结果"},
-  {"file":"04-real-multi-query-test.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"三子问题 Prompt 真实测试输出"},
-  {"file":"05-official-hybrid-search.png","source":"https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"06-official-pre-filter.png","source":"https://learn.microsoft.com/en-us/azure/search/vector-search-filters","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"07-official-servicenow.png","source":"https://learn.microsoft.com/en-us/connectors/service-now/","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"08-real-knowledge-ready.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"定位runbook.clean.md所在行，仅截取Ready状态单元格，不含修改者"}
+  {
+    "file": "01-real-agent-instructions.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "Helpdesk 全局指令编辑区域"
+  },
+  {
+    "file": "02-real-knowledge-upload.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "runbook.clean.md 上传表单，不是自定义检索执行结果"
+  },
+  {
+    "file": "04-real-multi-query-test.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "三子问题 Prompt 真实测试输出"
+  },
+  {
+    "file": "05-official-hybrid-search.png",
+    "source": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "06-official-pre-filter.png",
+    "source": "https://learn.microsoft.com/en-us/azure/search/vector-search-filters",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "07-official-servicenow.png",
+    "source": "https://learn.microsoft.com/en-us/connectors/service-now/",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "08-real-knowledge-ready.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "定位runbook.clean.md所在行，仅截取Ready状态单元格，不含修改者"
+  },
+  {
+    "file": "rerun-2026-10-13-01-instructions.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:34:06.500Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual reopened Helpdesk agent instructions during rerun."
+  },
+  {
+    "file": "rerun-2026-10-13-03-knowledge-test.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:34:35.234Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual native knowledge query response; no controlled retrieval, ServiceNow or Teams call verified."
+  },
+  {
+    "file": "rerun-2026-10-13-04-prompt-test.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:35:55.567Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual rerun of Helpdesk query rewrite Prompt: three validated distinct queries; not a search execution."
+  },
+  {
+    "file": "rerun-2026-10-13-05-log-upload.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:36:08.698Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual Test-pane attempt to upload synthetic error.log; inspect support/error status, not a knowledge upload."
+  },
+  {
+    "file": "rerun-2026-10-13-06-log-result.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:36:31.390Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual response after submitting error.log as user input. Does not verify controlled SearchKnowledge, ServiceNow or Teams."
+  },
+  {
+    "file": "rerun-2026-10-13-07-log-text-result.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:36:56.073Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual response after supplying SanitizedLog as text; attachment-to-text tool was not implemented."
+  },
+  {
+    "file": "rerun-2026-10-13-09-tools.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:06:31.651Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual loaded Helpdesk Tools list; RewriteHelpdeskQueriesLab04 is visible. No controlled retrieval, ServiceNow or Teams write result is demonstrated."
+  },
+  {
+    "file": "rerun-2026-10-13-08-native-knowledge-result.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:11:19.831Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual completed native-knowledge-test, cropped to final reply rather than virtualized chat padding. This is native knowledge, not controlled Azure retrieval or an external write."
+  },
+  {
+    "file": "rerun-2026-10-13-02-knowledge-ready.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:15:51.477Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual existing runbook.clean.md knowledge row with Ready status, after widening viewport to include the status column. Native uploaded knowledge, not a custom Azure index."
+  }
 ]

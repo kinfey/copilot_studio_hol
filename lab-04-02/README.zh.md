@@ -6,6 +6,8 @@
 
 ## 第一步：准备合同、政策与权限隔离
 
+> **2026-10-13 复跑：**使用 Playwright 控制 Microsoft Edge，复用原有法务教学 Agent。已执行原生政策问答、云端重写 Prompt、真实合同附件发送及完整文本补充测试；没有执行受控 Azure 检索或生成在线 Excel 审计报告。
+
 1. 使用 Edge 登录 Copilot Studio、Power Automate、SharePoint 和 Excel Online，选择有权使用的实验环境。
 2. 下载 [教学合同](data/contract.md)、[原始法务知识](data/policy.raw.md)、[元数据](data/metadata.json)。只上传教学资料，不上传真实客户合同或个人数据。
 3. 准备专用 SharePoint 法务知识库及合同暂存区，两者权限分开。作者上传“法务政策”是共享知识；用户上传“待审合同”是单次审计输入，**不能自动加入共享知识库**。
@@ -28,6 +30,8 @@
 5. Word/PDF 扩展使用批准的文本提取/OCR，保留条款编号、页码、表格结构与原文件位置。图片合同不得当成已经提取成功的文本。
 
 **检查点：**清洗不能改变否定词、数字、例外或审批条件；列数不齐必须报错。配套脚本不解析 Word/PDF，仅处理已提取的 Markdown 和制表符表格。
+
+**本地复跑：**重新执行 `prepare.mjs`，生成清洗政策、分块、三个混合请求并检查原有人工夹具的双引用。这些是本地输出，不是新检索的规则或模型审计结果。本轮没有重新生成原有离线 XLSX。
 
 ## 第三步：按法务条款语义分块（优化维度2）
 
@@ -85,6 +89,14 @@
 
 ![真实 policy.clean.md 的 Ready 状态，仅截取状态单元格](screenshots/07-real-knowledge-ready.png)
 
+![2026-10-13：重新检查原有合同审核指令](screenshots/rerun-2026-10-13-01-instructions.png)
+
+![2026-10-13：真实policy.clean.md知识行状态Ready](screenshots/rerun-2026-10-13-02-knowledge-ready.png)
+
+![2026-10-13：政策基线实际回答30天并引用policy.clean.md](screenshots/rerun-2026-10-13-03-knowledge-test.png)
+
+[最终真实政策答案](output/rerun-2026-10-13-knowledge-test.json)说明终止后30天删除、超过30天需法务书面批准，以及虚构教学规则的边界。这是原生文件知识，不是受控 Azure 搜索结果。
+
 ## 第七步：三个精准检索子问题（优化维度5）
 
 1. **Tools → Add a tool → Prompt**，名称 `RewriteContractQueriesLab04`。
@@ -97,6 +109,10 @@
 5. Save → Add and configure。真实结果保存在 [queries.real.json](output/queries.real.json)；完整文字以此文件为准，设计器截图可能横向截断长行。
 6. 该 Prompt 为教学合同的三类条款设计；其他合同先解析实际条款类型，再决定三个检索角度，不能忽略其他关键条款。
 7. 将每个子问题传给同一权限范围的 SearchLegalKnowledge，合并证据后审核。
+
+![2026-10-13：实际重测保存、责任与跨境三个问题Prompt](screenshots/rerun-2026-10-13-04-prompt-test.png)
+
+[本轮云端结果](output/rerun-2026-10-13-queries.json)通过 `validateQueries`，恰好三个不同 `{text}` 对象；该 Prompt 测试没有查询真实索引。
 
 ## 第八步：上传合同、解析与证据式审计主题
 
@@ -113,6 +129,16 @@
 
 6. 在流程里逐字验证 contractQuote 属于当前合同，ruleQuote 属于对应 chunk；校验规则范围与访问权限、chunkId 和规则版本。
 7. 给无证据条款保留“信息不足/未覆盖”，不能把“没检索到违规”当成“合规”。明确记录所有条款的覆盖情况。
+
+**第八步实际复跑：**在 Test 添加 `data/contract.md`（527 bytes）并带审核请求发送，最终回复仍要求合同文本；出现附件不等于提取成功。另开**新会话**提交完整虚构合同文本，等待最终答案而不是“Processing”占位。
+
+![2026-10-13：发送前添加合同附件](screenshots/rerun-2026-10-13-05-contract-upload.png)
+
+![2026-10-13：合同附件实际发送后仍要求文本](screenshots/rerun-2026-10-13-06-contract-result.png)
+
+![2026-10-13：完整文本实际返回教学审核与政策引用](screenshots/rerun-2026-10-13-07-contract-text-result.png)
+
+记录：[真实附件对话](output/rerun-2026-10-13-contract-upload-test.json)、[最终完整文本重试](output/rerun-2026-10-13-contract-text-test.json)。文本重试识别三条教学规则冲突、第四条未覆盖，并引用 `policy.clean.md`；但把中文原文译成英文，且未提供有效的 `chunkId`、引用 URL，因此**没有通过**逐字双引用、结构化审计协议或用户文件解析验收。回答中“已获批范围”的文字不证明服务端硬过滤生效；未生成报告或执行外部写入。
 
 ### 自定义知识源可选接法
 
@@ -140,6 +166,10 @@
 5. 生成器把单元格明确存为文本，避免以 `=` 开头的内容变成公式；没有计算公式。新增真实结果不能直接用这个只接受离线夹具的导出器冒充生产导出。
 
 ### 9.2 Power Automate 在线输出
+
+**本轮边界：**没有执行现有审计 worker 或受控检索工具，没有写入在线 Excel 行。实际工具列表显示重写 Prompt，不是完整审计链路成功。SharePoint 元数据、授权检索、文件提取、精确引用和在线 worker 仍是前置条件；不能把离线工作簿当作在线结果。
+
+![2026-10-13：合同Agent真实工具列表](screenshots/rerun-2026-10-13-08-tools.png)
 
 1. 将教学工作簿作为模板保存到**授权报告库**；每次审计先复制独立文件，不多人并发写同一模板。
 2. 清空新文件 AuditRows 的四条教学记录，保留表头与表结构；更新 Readme 执行性质和真实审计来源。
@@ -179,12 +209,17 @@
 |---|---|
 | 法务 Agent、全局指令、关闭 Web Search | 已真实 Edge 操作 |
 | 清洗政策文件上传 | 已真实 Add to agent，最终状态 Ready |
-| 三问题 Prompt | 已真实测试、保存、绑定，模型输出另存 |
-| 清洗、语义分块、三份请求与双引用校验 | 本地完成 |
-| Excel 审计样例 | 已生成，明确离线人工夹具 |
-| SharePoint 元数据、Azure 实际检索、用户合同上传解析、在线报告 | 尚未端到端运行，需授权实验资源 |
+| 原生政策问答 | 2026-10-13实际返回30天答案并引用policy.clean.md |
+| 三问题 Prompt | 2026-10-13实际云端重测通过三问题检查，与Agent文件提取分开验收 |
+| 用户合同附件 | 已实际上传并发送，最终回复仍要求合同文本，提取未通过 |
+| 完整合同文本补充 | 实际原生知识审核识别三条冲突和一条未覆盖；译文引用、缺chunkId和URL不满足严格审计协议 |
+| 清洗、语义分块、三份请求与双引用校验 | 已重新执行prepare.mjs，本地检查人工夹具 |
+| Excel 审计样例 | 保留历史离线人工工作簿，本轮未重新生成，不作为在线输出 |
+| SharePoint 元数据、Azure 实际检索、在线报告 | 未端到端执行，需已授权现有实验资源及集成 |
 
 脚本共用 [Lab 04-01 的检索校验模块](../lab-04-01/scripts/rag.mjs)，保持两个案例同一过滤与门控规则。两个目录需一起保留。截图来源见 [manifest.json](screenshots/manifest.json)。
+
+[本轮截图来源](screenshots/rerun-2026-10-13.json)区分原生知识、云端 Prompt、实际附件测试及文本补充的缺失审计字段；不声称已测得云端检索准确率或完成在线工作簿验收。
 
 ## 官方参考
 

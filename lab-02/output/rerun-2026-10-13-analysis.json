@@ -1,0 +1,19 @@
+{
+  "kind": "actual-cloud-prompt-test",
+  "tool": "AnalyzeTaskRequest",
+  "response": {
+    "title": "整理本周销售演示资料并提交内部审阅",
+    "summary": "核对模拟销售表，准备三页汇报大纲，整理本周销售演示资料，完成后提交内部审阅，禁止发送给客户。",
+    "category": "sales",
+    "needsClarification": false,
+    "clarificationQuestion": "",
+    "riskNotes": [
+      {
+        "text": "仅限内部审阅，不能发送给客户。"
+      },
+      {
+        "text": "汇报大纲需控制在三页以内。"
+      }
+    ]
+  }
+}

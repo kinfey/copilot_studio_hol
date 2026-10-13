@@ -1,0 +1,5 @@
+{
+  "kind": "actual-native-knowledge-baseline",
+  "input": "POL-RET-01 规定多少天？只查询已上传的教学政策。",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-ContractReviewAgent-Lab04. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:39 PM\nJust now\nBot said: Hello, I'm Workshop-ContractReviewAgent-Lab04. How can I help? Message is interactive. Click to interact.\nYou said:\n\nPOL-RET-01 规定多少天？只查询已上传的教学政策。\n\nYou said: POL-RET-01 规定多少天？只查询已上传的教学政策。\nBot said:\n\nPOL-RET-01：30 days. The uploaded teaching policy states that customer data should be deleted within 30 days after contract termination; exceeding 30 days requires written Legal approval. It is explicitly a fictional internal teaching rule, not a legal requirement. ​1​\n\n1 reference\n1\npolicy.clean.md\nLike\nDislike\nSent at October 13 at 5:39 PM\nJust now\nBot said: POL-RET-01：30 days. The uploaded teaching policy states that customer data should be deleted within 30 days after contract termination; exceeding 30 days requires written Legal approval. It is explicitly a fictional internal teaching rule, not a legal requirement. ​1​"
+}

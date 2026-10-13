@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-13",
+  "browser": "Microsoft Edge",
+  "automation": "Playwright over CDP",
+  "screenshots": [
+    {
+      "file": "rerun-2026-10-13-01-instructions.png",
+      "capturedAt": "2026-10-13T09:39:36.511Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Reopened existing contract agent instructions during rerun."
+    },
+    {
+      "file": "rerun-2026-10-13-04-prompt-test.png",
+      "capturedAt": "2026-10-13T09:39:59.571Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual RewriteContractQueriesLab04 cloud Prompt retest with saved synthetic sample inputs."
+    },
+    {
+      "file": "rerun-2026-10-13-03-knowledge-test.png",
+      "capturedAt": "2026-10-13T09:40:28.925Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Completed actual native policy baseline answer; not custom retrieval or online audit."
+    },
+    {
+      "file": "rerun-2026-10-13-05-contract-upload.png",
+      "capturedAt": "2026-10-13T09:40:32.061Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual teaching contract attached to user Test pane, not added to shared knowledge."
+    },
+    {
+      "file": "rerun-2026-10-13-06-contract-result.png",
+      "capturedAt": "2026-10-13T09:40:41.181Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual response to uploaded synthetic contract. No online Excel write or controlled index call verified."
+    },
+    {
+      "file": "rerun-2026-10-13-08-tools.png",
+      "capturedAt": "2026-10-13T09:41:07.993Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Only RewriteContractQueriesLab04 is bound; controlled retrieval and Excel audit-generation tools are absent."
+    },
+    {
+      "file": "rerun-2026-10-13-07-contract-text-result.png",
+      "capturedAt": "2026-10-13T10:11:53.246Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual completed contract-text-test, cropped to final reply rather than virtualized chat padding. This is native knowledge, not controlled Azure retrieval or an external write."
+    },
+    {
+      "file": "rerun-2026-10-13-02-knowledge-ready.png",
+      "capturedAt": "2026-10-13T10:15:53.440Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual existing policy.clean.md knowledge row with Ready status, after widening viewport to include the status column. Native uploaded knowledge, not a custom Azure index."
+    }
+  ]
+}

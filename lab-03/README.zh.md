@@ -6,6 +6,8 @@
 
 ## 第一步：确认模拟与真实 MCP 的区别
 
+> **2026-10-13 复跑：**使用 Playwright 控制 Microsoft Edge，复用原有 Workshop Agent。已实际执行直接优惠问题、五个独立模拟用例和两项交易边界问题；没有通过外部工具查询真实优惠、领券、下单或支付。
+
 1. 模拟主线不需要 Token，也不访问个人消费账户。
 2. 教学汉堡12元、咖啡6元；教学券仅演示“已持有”和“可领取”分类，不参与算价，不是麦当劳今日价格或真实优惠。
 3. 真实查询必须成功绑定 MCP 并取得工具结果。Agent 回答、连接器定义或模拟成功均不等于 MCP 已连通。
@@ -23,6 +25,8 @@
 ![真实Studio：仅内部模拟的全局指令](screenshots/11-real-studio-instructions.png)
 
 **完成检查：**Agent 不承诺自动提醒，不索取密钥、地址或支付信息。
+
+![2026-10-13：重新检查模拟与真实查询的全局边界](screenshots/rerun-2026-10-13-01-instructions.png)
 
 ## 第三步：创建内部模拟主题
 
@@ -53,6 +57,14 @@
 
 **完成检查：**`1.5`份汉堡、负数或两种数量均为0不能产生有效报价。
 
+**本轮逐问执行：**新会话输入 `模拟订餐`，等汉堡问题出现后填 `1`，等咖啡问题出现后填 `1`，等预算问题出现后填 `25`。不能在相应新问题出现前连续发送全部答案。
+
+![2026-10-13：模拟说明与汉堡数量问题](screenshots/rerun-2026-10-13-04-burger-question.png)
+
+![2026-10-13：回答汉堡数量后出现咖啡问题](screenshots/rerun-2026-10-13-05-question.png)
+
+![2026-10-13：回答咖啡数量后出现预算问题](screenshots/rerun-2026-10-13-06-question.png)
+
 ## 第五步：使用 Power Fx 算价
 
 Set variable 节点写入：
@@ -74,6 +86,10 @@ Topic.TotalYuan <= Topic.BudgetYuan
 
 **完成检查：**计算来自主题节点，而非模型自由心算。
 
+![2026-10-13：1汉堡1咖啡预算25元，实际返回18元预算内](screenshots/rerun-2026-10-13-07-within-budget.png)
+
+见[实际独立对话](output/rerun-2026-10-13-within-budget.json)。这是真实执行 Studio 模拟主题，不是真实麦当劳订单。
+
 ## 第六步：直接测试“今天有什么优惠券”
 
 1. 打开 **Test**。若旧对话停在模拟主题的提问中，先展开测试窗格，选择 **New test session**，不要使用画布缩放的 Reset。
@@ -86,6 +102,10 @@ Topic.TotalYuan <= Topic.BudgetYuan
 
 **实际结果：**Agent 回复“当前MCP尚未连通，无法查询今天的真实优惠券”，未进入模拟订餐。见[真实测试记录](output/today-coupons-test.real.json)。这验证了路由和明确失败提示，**不表示 MCP 连通成功**；继续第八、九步处理连接。
 
+![2026-10-13：直接优惠问题再次明确真实MCP不可用](screenshots/rerun-2026-10-13-02-coupons-test.png)
+
+[本轮真实对话](output/rerun-2026-10-13-coupons.json)没有追问套餐数量，也没有取得真实优惠券。提供另行模拟的选项不等于 MCP 检索成功。
+
 ## 第七步：验证异常分支
 
 每次用 **New test session** 开始独立对话，或完整结束主题后重新触发。必须等待本轮新提问后再发送，不能匹配旧问题而连续发送。
@@ -96,9 +116,24 @@ Topic.TotalYuan <= Topic.BudgetYuan
 | 1、1、10 | 合计18元，超预算 |
 | 1.5、1、25 | 非法数量，停止试算 |
 | 0、0、25 | 至少选择一件，停止试算 |
+| -1、1、25 | 负数量非法，停止试算 |
 | “领取教学券”或“确认支付” | 说明模拟限制，无账户写入 |
 
-本轮按要求只测真实优惠问题，不运行模拟订餐。历史正常模拟用例已完成；超预算和非法数量仍需独立会话实测，不把代码检查冒充云端执行证据。
+**2026-10-13：**五个数值用例均在独立真实 Studio 会话执行。预算内结果见上；其余四项如下，小数、空购物车、负数明确停止试算。“领取教学券”说明教学券不能领取或核销，并提供模拟数量问题；“确认支付”明确拒绝真实付款。没有绑定外部交易工具。
+
+![2026-10-13：18元超过10元预算](screenshots/rerun-2026-10-13-07-over-budget.png)
+
+![2026-10-13：拒绝小数汉堡数量](screenshots/rerun-2026-10-13-07-fractional.png)
+
+![2026-10-13：拒绝空购物车](screenshots/rerun-2026-10-13-07-empty-cart.png)
+
+![2026-10-13：拒绝负数量](screenshots/rerun-2026-10-13-07-negative.png)
+
+![2026-10-13：教学券边界说明，没有真实领取](screenshots/rerun-2026-10-13-08-claim-refused.png)
+
+![2026-10-13：拒绝真实支付](screenshots/rerun-2026-10-13-08-payment-refused.png)
+
+完整真实记录：[超预算](output/rerun-2026-10-13-over-budget.json)、[小数](output/rerun-2026-10-13-fractional.json)、[空购物车](output/rerun-2026-10-13-empty-cart.json)、[负数](output/rerun-2026-10-13-negative.json)、[领券边界](output/rerun-2026-10-13-claim-refused.json)、[付款拒绝](output/rerun-2026-10-13-payment-refused.json)。这些云端对话与本地代码检查分别记录。
 
 ![历史真实Studio模拟：1汉堡1咖啡预算25元，合计18元](screenshots/12-real-studio-budget-pass.png)
 
@@ -121,7 +156,11 @@ Topic.TotalYuan <= Topic.BudgetYuan
 
 **完成检查：**需要“个人连接创建成功 → Agent选中并绑定 → tools/list成功 → 只读调用返回”四层证据。当前只有连接器定义存在，尚未取得真实工具列表或优惠券结果。
 
+![2026-10-13：Tools仍显示Create your first tool，没有绑定MCP](screenshots/rerun-2026-10-13-03-no-mcp-tools.png)
+
 ## 第九步：处理连接创建的 DLP 阻塞
+
+**本轮边界：**下方 DLP 错误属于历史证据。本轮检查了工具未绑定及真实查询未连通的现状，没有重新创建个人连接、输入凭据或重新验证 DLP 策略。执行真实只读调用前仍需已获批的现有连接和绑定。
 
 此前从既有连接器直接 **Create connection**，用户自行填写凭据后，产品明确返回：
 
@@ -163,13 +202,15 @@ Topic.TotalYuan <= Topic.BudgetYuan
 | SimulateMeal主题 | 已保存，Topic checker零错误 |
 | 直接询问今天有什么优惠券 | 已实测，明确MCP未连通，没有进入模拟订餐 |
 | 1汉堡＋1咖啡，预算25元 | 真实Test返回18元和未交易说明 |
-| 超预算与非法数量独立会话 | 待完成云端实测；主题已包含分支 |
+| 超预算与非法数量独立会话 | 2026-10-13独立真实会话已通过超预算、小数、空购物车与负数用例 |
 | MCP连接器定义 | 真实存在 |
 | MCP绑定及真实优惠券查询 | 尚未连通，此前连接创建被DLP阻止 |
 | Teams与每日08:00通知 | 已取消，不启用 |
 | 真实领券、订单、支付 | 未执行 |
 
 截图来源见 [manifest.json](screenshots/manifest.json)。历史截图仅说明当时的配置或错误，不证明目前连通。
+
+[本轮截图来源](screenshots/rerun-2026-10-13.json)登记新取得的真实产品截图。由于没有绑定连接，MCP 工具列表和真实优惠检索仍未执行；不能用模拟成功替代这些证据。
 
 ## 官方参考
 

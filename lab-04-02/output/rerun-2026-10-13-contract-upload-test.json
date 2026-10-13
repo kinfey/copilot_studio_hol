@@ -1,0 +1,7 @@
+{
+  "kind": "actual-user-file-agent-test",
+  "file": "contract.md",
+  "input": "检查附件合同的数据保存、责任限制和跨境条款与教学规则的冲突。请引用合同和规则原文；不要声称生成在线 Excel，工具未接入时明确说明。",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-ContractReviewAgent-Lab04. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:40 PM\nJust now\nBot said: Hello, I'm Workshop-ContractReviewAgent-Lab04. How can I help? Message is interactive. Click to interact.\nYou said:\n\n检查附件合同的数据保存、责任限制和跨境条款与教学规则的冲突。请引用合同和规则原文；不要声称生成在线 Excel，工具未接入时明确说明。\n\nYou attached:\ncontract.md\n527 bytes\nAttachment sent\nYou said: 检查附件合同的数据保存、责任限制和跨境条款与教学规则的冲突。请引用合同和规则原文；不要声称生成在线 Excel，工具未接入时明确说明。 1 attachment.\nBot said:\n\nPlease provide the contract text.\n\nLike\nDislike\nSent at October 13 at 5:40 PM\nJust now\nBot said: Please provide the contract text. Message is interactive. Click to interact.",
+  "onlineExcelGenerated": false
+}

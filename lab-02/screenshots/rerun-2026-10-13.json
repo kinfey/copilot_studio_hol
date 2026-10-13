@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-13",
+  "browser": "Microsoft Edge",
+  "automation": "Playwright over CDP",
+  "screenshots": [
+    {
+      "file": "rerun-2026-10-13-01-instructions.png",
+      "capturedAt": "2026-10-13T09:41:19.536Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Existing Lab 02 global instructions reopened for rerun."
+    },
+    {
+      "file": "rerun-2026-10-13-02-help-topic.png",
+      "capturedAt": "2026-10-13T09:41:28.640Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual CardHelp topic rerun; no card or Planner task should be created by this explanation."
+    },
+    {
+      "file": "rerun-2026-10-13-03-analysis-prompt.png",
+      "capturedAt": "2026-10-13T09:42:20.523Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual AnalyzeTaskRequest cloud Prompt retest with saved synthetic sample inputs."
+    },
+    {
+      "file": "rerun-2026-10-13-04-card-target.png",
+      "capturedAt": "2026-10-13T09:43:58.651Z",
+      "sourceOrigin": "https://make.preview.powerautomate.com",
+      "description": "Actual existing Flow bot/channel Message configuration; the static card was still used in new runs. Not evidence that an attempted card edit persisted."
+    },
+    {
+      "file": "rerun-2026-10-13-05-card-delivered.png",
+      "capturedAt": "2026-10-13T09:53:48.625Z",
+      "sourceOrigin": "https://teams.cloud.microsoft",
+      "description": "Actual newly delivered minimal test card, still using historical sample dates and request ID; no Planner task is created by this two-action flow."
+    },
+    {
+      "file": "rerun-2026-10-13-06-card-run.png",
+      "capturedAt": "2026-10-13T09:54:53.366Z",
+      "sourceOrigin": "https://make.preview.powerautomate.com",
+      "description": "Actual minimal wait-card rerun after submitting approval. Not evidence of a queue, Planner task or reminder."
+    },
+    {
+      "file": "rerun-2026-10-13-07-card-reject.png",
+      "capturedAt": "2026-10-13T10:00:13.028Z",
+      "sourceOrigin": "https://teams.cloud.microsoft",
+      "description": "Separate real minimal-flow test card with a return reason entered before clicking Return; fixed historical ID/times are display-only."
+    },
+    {
+      "file": "rerun-2026-10-13-08-reject-run.png",
+      "capturedAt": "2026-10-13T10:01:12.328Z",
+      "sourceOrigin": "https://make.preview.powerautomate.com",
+      "description": "Separate real minimal wait-card run: Return with a reason, both actions Succeeded; no server-side rejection handling or task was executed."
+    },
+    {
+      "file": "rerun-2026-10-13-09-card-assign.png",
+      "capturedAt": "2026-10-13T10:03:22.584Z",
+      "sourceOrigin": "https://teams.cloud.microsoft",
+      "description": "Separate real minimal-flow card with backup selected before clicking Assign; no Planner task or actual assignee mapping is configured."
+    },
+    {
+      "file": "rerun-2026-10-13-10-assign-run.png",
+      "capturedAt": "2026-10-13T10:03:49.116Z",
+      "sourceOrigin": "https://make.preview.powerautomate.com",
+      "description": "Separate real minimal wait-card run: Assign returned backup and both actions Succeeded; no actual task, authorization branch or reminder."
+    }
+  ]
+}

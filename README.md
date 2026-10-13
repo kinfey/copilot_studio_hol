@@ -4,7 +4,7 @@
 
 A step-by-step workshop for building business agents with Microsoft Copilot Studio, Power Automate, Microsoft 365 connectors, MCP, and retrieval-augmented generation (RAG). The four lab tracks contain five manuals: Lab 04 is split into two enterprise scenarios.
 
-Screenshots retain the product steps and execution evidence. A comprehensive screenshot privacy review was not completed before publication.
+Screenshots retain product steps and execution evidence. New 2026-10-13 rerun screenshots use cropped product regions and account/identifier masking; response exports exclude credentials, headers, and responder identity. Historical attachments retain their original scope and should be reviewed before external sharing.
 
 ## Lab Guide
 
@@ -35,19 +35,23 @@ Read the English `README.md` or Chinese `README.zh.md` in each lab and follow **
 
 ## Verified Outcomes and Remaining Work
 
+**Latest rerun: 2026-10-13, Playwright + Microsoft Edge.** All five existing lab agents were exercised; available Prompt, conversation, attachment and cloud-flow steps were actually called. Only existing Workshop/Lab resources were authorized. Missing integrations and failed prerequisites were recorded, not replaced by new resources or simulated successes. Each bilingual manual now places dated screenshots and execution-record links beside the relevant steps; older screenshots remain historical.
+
 | Lab | Actual evidence obtained | Remaining or blocked work |
 |---|---|---|
-| 01 | Sales-reporting agent published; part of the scheduled Excel path configured. | The full Word and Outlook workflow has not been accepted end to end. |
-| 02 | Agent instructions, prompt, and topic saved; a card posted to a private test team, approval returned structured fields, and the minimal test flow succeeded. | Planner task creation, production worker, reminders, and publishing the agent to Teams are not complete. |
-| 03 | Connector definition exists; a direct coupon question correctly reports the missing connection; the optional internal simulation returned CNY 18 for the teaching meal. | MCP is not bound to the agent. Earlier personal connection creation was blocked by DLP; no real coupons were retrieved. Teams and daily notifications are cancelled. |
-| 04-01 | Agent and ready knowledge created; a query-rewrite prompt produced three questions; local preparation and retrieval-request examples saved. | Azure retrieval, ServiceNow ticket creation, and the Teams status workflow have not been verified end to end. |
-| 04-02 | Agent and ready knowledge created; three-question prompt output saved; an offline, manually annotated Excel audit fixture includes source citations. | Actual SharePoint metadata configuration and online automated audit generation have not been verified end to end. |
+| 01 | Actual Excel read succeeded; corrected cloud Prompt and normal/zero-period/help/refusal conversations were retested. Final schedule Off. | Run script failed with HTTP 404 / Operation not found; missing-input machine protocol failed; no flow-to-agent, cloud Word, Outlook draft, or PPT execution. |
+| 02 | Three separate new minimal-flow runs delivered cards and returned approve/self, reject/reason, and assign/backup; all Succeeded. | Static sample ID/times were reused for display only. Queue, authorization worker, real Planner assignment, reminders, and Teams-agent end-to-end submission remain undeployed/unverified. |
+| 03 | Direct coupon question reports unavailable MCP without entering simulation; five independent numeric simulation cases and two transaction-boundary questions executed. | No MCP tools are bound, so no tools/list or real coupon call occurred. DLP error is historical, not a newly tested policy result. Teams and notifications remain cancelled. |
+| 04-01 | Ready knowledge and a cited native AGW-401 answer confirmed; cloud three-query Prompt and local preparation rerun. | Actual log attachment still requested SanitizedLog; text retry reported invalid property. Controlled Azure search, ServiceNow and Teams status were not executed. |
+| 04-02 | Ready policy and cited 30-day answer confirmed; cloud three-query Prompt, actual contract attachment and complete-text fallback executed. | Attachment extraction failed; fallback used translated quotes and lacked chunkId/URL, so strict audit acceptance failed. No controlled Azure retrieval or online Excel report. Historical offline workbook retained. |
 
 The detailed execution records in each manual take precedence over this overview. A local check, a saved configuration, or an official documentation screenshot does not prove a deployed end-to-end workflow.
 
 ## Safety and Operating Boundaries
 
 Use fictional business data and isolated test resources. Do not post experiments to business teams or send real emails without the required authorization. Keep credentials, personal coupon codes, payment information, and sensitive account data out of documentation, screenshots, code, and logs.
+
+This rerun reused existing resources only: no business channels, real emails, coupon claims, orders or payments. The actual card responses were sent only to the dedicated lab channel. Failed prerequisites stop dependent writes; a Prompt test, native knowledge answer or offline fixture is never recorded as a complete workflow.
 
 Treat global instructions as behavioral guidance, not access control. Enforce tool allowlists, trusted permissions, and server-side filters where applicable. Do not bypass DLP restrictions by changing environments, connector names, domains, or proxies; request administrator approval. McDonald's real ordering and coupon-claim tools are not simulation APIs.
 

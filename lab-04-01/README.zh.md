@@ -7,6 +7,8 @@
 
 ## 第一步：准备实验与验收基线
 
+> **2026-10-13 复跑：**使用 Playwright 控制 Microsoft Edge，复用原有 Helpdesk Agent。已重测原生知识问答及云端三问题 Prompt；实际发送用户日志附件和文本重试暴露输入绑定失败。没有执行受控 Azure 搜索、ServiceNow 写入或 Teams 状态通知。
+
 1. 用 Edge 登录 Copilot Studio 和 Power Automate，选择有权限的实验环境；不要改动业务 Agent。
 2. 主线接入需要：实验 SharePoint 文档库、Azure AI Search、可用的 embedding 部署、启用的 Semantic ranker、ServiceNow 开发实例、专用 Teams 标准频道。
 3. 没有这些资源仍可完成本地预处理、Agent 知识上传、Prompt 测试；不能勾选真实搜索、工单或通知成功。不在本实验自动创建收费 Azure 资源。
@@ -39,6 +41,8 @@
 5. PDF/Word 扩展：先提取正文及表格结构；扫描 PDF 使用组织批准 OCR。保留文档页码和章节定位；合并单元格、图表与跨页表需人工核对。
 
 **完成检查：**页眉页脚去除；证书链与绑定版本表格可读；“不关闭 TLS 校验”没有丢失。本地脚本只处理配套 Markdown/制表符表格，不冒充通用 PDF/Word 解析器。
+
+**本地复跑：**已实际重新执行 `prepare.mjs`，重新生成清洗文档、按标题分块及混合请求并本地检查；没有部署索引或发起搜索。
 
 ## 第三步：按标题与语义分块（优化维度2）
 
@@ -94,6 +98,18 @@
 
 ![真实 runbook.clean.md 的 Ready 状态，仅截取状态单元格](screenshots/08-real-knowledge-ready.png)
 
+![2026-10-13：重新核对原有Helpdesk指令](screenshots/rerun-2026-10-13-01-instructions.png)
+
+![2026-10-13：原有runbook.clean.md知识行实际为Ready](screenshots/rerun-2026-10-13-02-knowledge-ready.png)
+
+**实际基线测试：**最初的场景问题路由到重写工具并追问 SanitizedLog，没有返回引用答案。另开新会话询问：`runbook.clean.md 中的 AtlasGateway 2.1 / AGW-401 条目写了哪些排查步骤与升级条件？这是知识条目解释，不分析用户日志，不创建工单。` 最终回答引用 `runbook.clean.md`，核对中间证书和绑定指纹，仅在授权修复仍失败后升级，并明确禁止关闭 TLS 或索取私钥。
+
+![2026-10-13：最初场景问题追问SanitizedLog](screenshots/rerun-2026-10-13-03-knowledge-test.png)
+
+![2026-10-13：独立原生知识问题实际返回带引用答案](screenshots/rerun-2026-10-13-08-native-knowledge-result.png)
+
+记录：[初次路由与输入追问](output/rerun-2026-10-13-knowledge-test.json)、[最终原生知识基线](output/rerun-2026-10-13-native-knowledge-test.json)。原生文件检索不证明自定义 ACL 或 Azure 硬预过滤生效。
+
 ## 第七步：Prompt 重写三个精准子问题（优化维度5）
 
 1. **Tools → Add a tool → Prompt**，名称 `RewriteHelpdeskQueriesLab04`。
@@ -107,6 +123,10 @@
 6. 在任务主题的 Prompt 节点将输入绑定到已脱敏日志与用户问题。`validateQueries` 不通过时明确返回错误，不默认复用上一次问题。
 7. 对三个子问题分别执行相同可信过滤查询，去重后回答。比较单问题与 multi-query 的 Recall@5、引用与延迟；多查询可能扩大噪声，不保证一定提升。
 
+![2026-10-13：实际重新调用云端三问题Prompt](screenshots/rerun-2026-10-13-04-prompt-test.png)
+
+[本轮云端结果](output/rerun-2026-10-13-queries.json)通过 `validateQueries`：恰好三个不同的 `{text}` 问题，保留 AtlasGateway 2.1 / AGW-401。这是一次 Prompt 调用，不是三次实际搜索。
+
 ## 第八步：用户上传日志、受控检索与工单确认
 
 1. 在 Agent **Settings → Generative AI** 的文件输入选项按租户允许的功能开启，Test 中上传 `data/error.log`。不能把用户上传和作者 Knowledge 上传混为一谈。
@@ -116,7 +136,21 @@
 5. 呈现待提交 short_description、脱敏 description 和 requestId，添加用户确认分支；取消不写工单。
 6. 仅调用实例白名单固定的 `CreateIncident`；产品/错误码允许模型分析，工单优先级与分配组由规则或人工确认。
 
+**第八步真实上传测试：**在 Test 添加 `data/error.log`（361 bytes）后，带分析请求实际发送。最终回复仍追问 SanitizedLog；在该会话补充完整虚构日志文本，回复 `SanitizedLog is not a valid property` 并再次追问。附件上传成功，但文件提取、输入绑定与诊断链路**未通过**。
+
+![2026-10-13：发送前已添加日志附件，不是解析结果](screenshots/rerun-2026-10-13-05-log-upload.png)
+
+![2026-10-13：附件实际发送后仍追问SanitizedLog](screenshots/rerun-2026-10-13-06-log-result.png)
+
+![2026-10-13：完整日志文本重试报告invalid property](screenshots/rerun-2026-10-13-07-log-text-result.png)
+
+完整对话：[附件测试](output/rerun-2026-10-13-log-upload-test.json)、[文本重试](output/rerun-2026-10-13-log-text-test.json)。继续前应核对真实工具输入 schema，并显式绑定脱敏提取文本；不能把 Prompt 编辑器测试当作 Agent 输入绑定已成功。
+
 ## 第九步：ServiceNow API 与 Teams 状态
+
+**本轮边界：**实际加载的 Tools 列表只有三问题重写 Prompt，没有 SearchKnowledge、CreateIncident 或 Teams 通知调用证据，也没有取得工单号。需要已授权的现有检索及 ServiceNow 实验资源和正确输入绑定；本轮没有新部署外部资源。
+
+![2026-10-13：真实Helpdesk工具列表只有重写Prompt](screenshots/rerun-2026-10-13-09-tools.png)
 
 1. 在 ServiceNow **开发实例**配置批准的 OAuth 集成和 incident 表最小权限；在 Power Platform 创建自定义连接器。
 2. 配置固定主机 `<YOUR_DEV_INSTANCE>.service-now.com`，操作 POST `/api/now/table/incident`，参考 [请求体](flows/incident-request.example.json)。
@@ -138,13 +172,17 @@
 |---|---|
 | Edge 创建 Helpdesk Agent、保存指令与关闭 Web Search | 已真实操作 |
 | 上传清洗 runbook | 已真实 Add to agent，最终状态 Ready；不是自定义索引部署证明 |
-| 三问题 Prompt | 已真实测试、保存并绑定，输出保存 |
-| 本地清洗、语义分块、检索请求 | 文件已保存，无真实搜索调用 |
+| 原生知识基线 | 2026-10-13独立知识问题实际返回AGW-401排查、升级条件与runbook.clean.md引用 |
+| 三问题 Prompt | 2026-10-13实际云端重测通过三问题校验；不代表Agent输入绑定正常 |
+| 用户日志附件与文本重试 | 已实际发送；附件仍追问SanitizedLog，文本报invalid property；提取/绑定未通过 |
+| 本地清洗、语义分块、检索请求 | 已重新执行prepare.mjs；仅本地检查，无真实搜索调用 |
 | SharePoint 元数据、Azure 索引/硬过滤、ServiceNow、Teams 通知 | 尚未接入与端到端验证；需要指定授权实验资源 |
 
 截图来源见 [manifest.json](screenshots/manifest.json)。配套代码不会自动部署资源或发送外部请求。
 
 官方文档截图复现脚本为 [capture-docs.mjs](scripts/capture-docs.mjs)：在已启动的 Edge CDP `127.0.0.1:9223` 上运行 `npm run screenshots:docs`。仅重拍官方页面，不伪造产品配置或执行结果；执行前安装本目录依赖。
+
+**2026-10-13补充状态：**原生知识基线已实际返回带 `runbook.clean.md` 引用的排查与升级答案；云端三问题重测通过；日志附件及文本输入绑定未通过；受控检索、工单与通知未执行。[本轮截图来源](screenshots/rerun-2026-10-13.json)登记新证据。未进行10/100/500文档的云端评测，不填写未经测量的准确率或时延。
 
 ## 官方参考
 

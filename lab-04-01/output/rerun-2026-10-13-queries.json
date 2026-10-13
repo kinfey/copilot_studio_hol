@@ -1,0 +1,16 @@
+{
+  "kind": "actual-cloud-prompt-test",
+  "response": {
+    "queries": [
+      {
+        "text": "AGW-401 错误在 AtlasGateway 2.1 版本中出现，含义为轮换证书后证书验证失败。该错误适用于哪些具体场景和版本？"
+      },
+      {
+        "text": "遇到 AtlasGateway 2.1 的 AGW-401 证书验证失败错误时，推荐的排查步骤有哪些？如日志信息不足，请说明需要补充哪些信息。"
+      },
+      {
+        "text": "在 AtlasGateway 2.1 出现 AGW-401 错误时，创建事件工单需要包含哪些关键信息？满足哪些条件时建议升级或上报？"
+      }
+    ]
+  }
+}

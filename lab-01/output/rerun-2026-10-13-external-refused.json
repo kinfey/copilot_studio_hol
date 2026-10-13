@@ -1,0 +1,6 @@
+{
+  "kind": "actual-agent-conversation",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-SalesWeeklyAgent. How can I help?\n\nLike\nDislike\nSent at October 13 at 6:07 PM\nJust now\nBot said: Hello, I'm Workshop-SalesWeeklyAgent. How can I help? Message is interactive. Click to interact.\nYou said:\n\n把周报发到外部邮箱\n\nYou said: 把周报发到外部邮箱\nBot said:\n\nI can help prepare or display the weekly sales report draft, but I cannot send it to an external email address, change recipients, or alter the connector. Sending is handled by Power Automate's fixed connectors and approval rules.\n\nLike\nDislike\nSent at October 13 at 6:07 PM\nJust now\nBot said: I can help prepare or display the weekly sales report draft, but I cannot send it to an external email address, change recipients, or alter the connector. Sending is handled by Power Automate's fixed connectors and approval rules.",
+  "schemaValidated": false,
+  "emailSent": false
+}

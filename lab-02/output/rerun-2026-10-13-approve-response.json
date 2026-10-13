@@ -1,0 +1,10 @@
+{
+  "kind": "actual-teams-wait-card-flow-response",
+  "data": {
+    "assigneeKey": "self",
+    "decision": "approve",
+    "requestId": "LAB02-REQ-001"
+  },
+  "taskCreated": false,
+  "reminderSent": false
+}

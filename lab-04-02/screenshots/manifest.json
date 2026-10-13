@@ -1,9 +1,120 @@
 [
-  {"file":"01-real-agent-instructions.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"合同Agent全局指令"},
-  {"file":"02-real-policy-upload.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"教学政策知识上传，不是用户合同上传"},
-  {"file":"03-real-multi-query-test.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"合同三子问题Prompt测试"},
-  {"file":"04-official-custom-knowledge.png","source":"https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/custom-knowledge-sources","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"05-official-file-input.png","source":"https://learn.microsoft.com/en-us/microsoft-copilot-studio/image-input-analysis","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"06-official-excel-connector.png","source":"https://learn.microsoft.com/en-us/connectors/excelonlinebusiness/","kind":"官方文档","method":"Playwright + Microsoft Edge"},
-  {"file":"07-real-knowledge-ready.png","source":"Copilot Studio","kind":"真实产品操作","method":"Playwright + Microsoft Edge","evidence":"定位policy.clean.md所在行，仅截取Ready状态单元格，不含修改者"}
+  {
+    "file": "01-real-agent-instructions.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "合同Agent全局指令"
+  },
+  {
+    "file": "02-real-policy-upload.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "教学政策知识上传，不是用户合同上传"
+  },
+  {
+    "file": "03-real-multi-query-test.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "合同三子问题Prompt测试"
+  },
+  {
+    "file": "04-official-custom-knowledge.png",
+    "source": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/custom-knowledge-sources",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "05-official-file-input.png",
+    "source": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/image-input-analysis",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "06-official-excel-connector.png",
+    "source": "https://learn.microsoft.com/en-us/connectors/excelonlinebusiness/",
+    "kind": "官方文档",
+    "method": "Playwright + Microsoft Edge"
+  },
+  {
+    "file": "07-real-knowledge-ready.png",
+    "source": "Copilot Studio",
+    "kind": "真实产品操作",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "定位policy.clean.md所在行，仅截取Ready状态单元格，不含修改者"
+  },
+  {
+    "file": "rerun-2026-10-13-01-instructions.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:39:36.511Z",
+    "runDate": "2026-10-13",
+    "evidence": "Reopened existing contract agent instructions during rerun."
+  },
+  {
+    "file": "rerun-2026-10-13-04-prompt-test.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:39:59.571Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual RewriteContractQueriesLab04 cloud Prompt retest with saved synthetic sample inputs."
+  },
+  {
+    "file": "rerun-2026-10-13-03-knowledge-test.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:40:28.925Z",
+    "runDate": "2026-10-13",
+    "evidence": "Completed actual native policy baseline answer; not custom retrieval or online audit."
+  },
+  {
+    "file": "rerun-2026-10-13-05-contract-upload.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:40:32.061Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual teaching contract attached to user Test pane, not added to shared knowledge."
+  },
+  {
+    "file": "rerun-2026-10-13-06-contract-result.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:40:41.181Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual response to uploaded synthetic contract. No online Excel write or controlled index call verified."
+  },
+  {
+    "file": "rerun-2026-10-13-08-tools.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:41:07.993Z",
+    "runDate": "2026-10-13",
+    "evidence": "Only RewriteContractQueriesLab04 is bound; controlled retrieval and Excel audit-generation tools are absent."
+  },
+  {
+    "file": "rerun-2026-10-13-07-contract-text-result.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:11:53.246Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual completed contract-text-test, cropped to final reply rather than virtualized chat padding. This is native knowledge, not controlled Azure retrieval or an external write."
+  },
+  {
+    "file": "rerun-2026-10-13-02-knowledge-ready.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:15:53.440Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual existing policy.clean.md knowledge row with Ready status, after widening viewport to include the status column. Native uploaded knowledge, not a custom Azure index."
+  }
 ]

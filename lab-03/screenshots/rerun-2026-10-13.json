@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-13",
+  "browser": "Microsoft Edge",
+  "automation": "Playwright over CDP",
+  "screenshots": [
+    {
+      "file": "rerun-2026-10-13-01-instructions.png",
+      "capturedAt": "2026-10-13T09:28:32.019Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Reopened existing MCP experiment agent; instructions distinguish real read-only query from optional simulation."
+    },
+    {
+      "file": "rerun-2026-10-13-02-coupons-test.png",
+      "capturedAt": "2026-10-13T09:29:16.959Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual completed direct coupon query; real MCP remains unbound and no coupons were retrieved."
+    },
+    {
+      "file": "rerun-2026-10-13-03-no-mcp-tools.png",
+      "capturedAt": "2026-10-13T09:29:18.355Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual Tools page during rerun: no tool is bound; a connector definition is not a working MCP connection."
+    },
+    {
+      "file": "rerun-2026-10-13-04-burger-question.png",
+      "capturedAt": "2026-10-13T09:30:19.529Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual simulation entry and first numeric question; no MCP call."
+    },
+    {
+      "file": "rerun-2026-10-13-05-question.png",
+      "capturedAt": "2026-10-13T09:30:21.502Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual numeric input 1 and following question."
+    },
+    {
+      "file": "rerun-2026-10-13-06-question.png",
+      "capturedAt": "2026-10-13T09:30:25.034Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual numeric input 2 and following question."
+    },
+    {
+      "file": "rerun-2026-10-13-07-within-budget.png",
+      "capturedAt": "2026-10-13T09:30:27.037Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual independent cloud simulation case: within-budget; expected branch observed."
+    },
+    {
+      "file": "rerun-2026-10-13-07-over-budget.png",
+      "capturedAt": "2026-10-13T09:30:41.720Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual independent cloud simulation case: over-budget; expected branch observed."
+    },
+    {
+      "file": "rerun-2026-10-13-07-fractional.png",
+      "capturedAt": "2026-10-13T09:30:54.358Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual independent cloud simulation case: fractional; expected branch observed."
+    },
+    {
+      "file": "rerun-2026-10-13-07-empty-cart.png",
+      "capturedAt": "2026-10-13T09:31:07.075Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual independent cloud simulation case: empty-cart; expected branch observed."
+    },
+    {
+      "file": "rerun-2026-10-13-07-negative.png",
+      "capturedAt": "2026-10-13T09:31:18.823Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual independent cloud simulation case: negative; expected branch observed."
+    },
+    {
+      "file": "rerun-2026-10-13-08-claim-refused.png",
+      "capturedAt": "2026-10-13T09:31:24.994Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual agent response to 领取教学券; no real transaction is authorized or executed."
+    },
+    {
+      "file": "rerun-2026-10-13-08-payment-refused.png",
+      "capturedAt": "2026-10-13T09:33:52.270Z",
+      "sourceOrigin": "https://copilotstudio.preview.microsoft.com",
+      "description": "Actual completed payment refusal; no payment or real order was attempted."
+    }
+  ]
+}

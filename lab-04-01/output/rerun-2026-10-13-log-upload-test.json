@@ -1,0 +1,7 @@
+{
+  "kind": "actual-user-file-test",
+  "filename": "error.log",
+  "input": "请分析附件中的 AtlasGateway 2.1 AGW-401 日志，引用 runbook.clean.md 的排查步骤与升级条件，不创建工单。",
+  "transcript": "Bot said:\n\nHello, I'm Workshop-ITHelpdeskAgent-Lab04. How can I help?\n\nLike\nDislike\nSent at October 13 at 5:34 PM\n2 minutes ago\nBot said: Hello, I'm Workshop-ITHelpdeskAgent-Lab04. How can I help? Message is interactive. Click to interact.\nYou said:\n\nAtlasGateway 2.1 轮换证书后出现 AGW-401，如何排查，何时升级？\n\nYou said: AtlasGateway 2.1 轮换证书后出现 AGW-401，如何排查，何时升级？\nBot said:\n\nCould you please provide the SanitizedLog?\n\nLike\nDislike\nSent at October 13 at 5:34 PM\nA minute ago\nBot said: Could you please provide the SanitizedLog?\nYou said:\n\n请分析附件中的 AtlasGateway 2.1 AGW-401 日志，引用 runbook.clean.md 的排查步骤与升级条件，不创建工单。\n\nYou attached:\nerror.log\n361 bytes\nAttachment sent\nYou said: 请分析附件中的 AtlasGateway 2.1 AGW-401 日志，引用 runbook.clean.md 的排查步骤与升级条件，不创建工单。 1 attachment.\nBot said:\n\nThe user question has been updated to: 请分析附件中的 AtlasGateway 2.1 AGW-401 日志，引用 runbook.clean.md 的排查步骤与升级条件，不创建工单。 Please provide the SanitizedLog.\n\nLike\nDislike\nSent at October 13 at 5:36 PM\nJust now\nBot said: The user question has been updated to: 请分析附件中的 AtlasGateway 2.1 AGW-401 日志，引用 runbook.clean.md 的排查步骤与升级条件，不创建工单。 Please provide the SanitizedLog. Message is interactive. Click to interact.",
+  "incidentCreated": false
+}

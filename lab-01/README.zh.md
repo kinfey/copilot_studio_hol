@@ -8,6 +8,8 @@
 
 ## 实验目标与执行顺序
 
+> **2026-10-13 复跑：**使用 Playwright 控制 Microsoft Edge，仅复用原有 Workshop 资源，没有创建替代资源或发送真实邮件。定时流程实际运行在 **Run script** 失败。以下 Prompt 和 Agent 测试是使用虚构输入的独立调用，不是该失败流程的下游结果。第五至第七步的云端链路仍未执行。
+
 本手册按依赖顺序操作：**第一步定时触发 → 第二步 Excel 与计算 → 第三步 Prompt → 第四步 Agent 编程、发布及流程调用 → 第五步 Word → 第六步 Outlook → 第七步 PPT 扩展**。先发布 Agent，再选择流程中的 Agent；不要跳过第四步直接测试邮件链路。
 
 每一步分为“操作”和“完成检查”。前一步检查未通过，就在该步骤排错，不继续向下。本文的检查值是验收要求，不是已经完成的声明；真实实施进度见文末。
@@ -137,6 +139,12 @@ Power Automate（负责时间、数据、文件和邮件）
 
 *图 1：Playwright 操作 Microsoft Edge，在真实 Power Automate 中设置 Week / Friday / 17 / 0；账号与环境信息已遮挡。该截图证明触发器参数配置，不证明完整报告链路已运行成功。*
 
+![2026-10-13：重新核对每周五17:00 UTC+8的原有触发器](screenshots/rerun-2026-10-13-02-recurrence.png)
+
+![2026-10-13：手动执行后定时流程最终恢复为Off](screenshots/rerun-2026-10-13-01-schedule-off.png)
+
+*本轮核对仍为 Week / Friday / 17 / 0。最终以详情页的 Off 为准；固定课堂日期没有改为正式运行时日期。*
+
 ![官方 Recurrence 文档](screenshots/11-official-recurrence.png)
 
 *图 2：Playwright 在 Edge 中截取的 Microsoft Learn 公开文档页面。[原始文档](https://learn.microsoft.com/en-us/power-automate/run-scheduled-tasks)。*
@@ -196,6 +204,16 @@ Power Automate（负责时间、数据、文件和邮件）
 
 脚本拒绝重复订单、非法日期、负金额、超过两位小数的金额、非整数件数、未知状态和本期空数据。金额以分累加，避免 `0.1 + 0.2` 误差；上期为零返回 `null`，不是 Infinity 或伪造零增长。区域/产品同额时用名称作稳定排序。
 
+**第二步实际复跑：**原有流程仅有 `Recurrence → List rows present in a table → Run script`，尚不具备上述全部节点。Excel 读取成功，但 `Run script` 返回 HTTP **404 / NotFound**，`RunScriptProd` 的响应为 `Operation not found`，没有取得成功的脚本 `result`。不能据此认定文件或脚本被删除；再次运行前应核对原有连接、文件、脚本选择与动作。
+
+![2026-10-13：核对原有文件、脚本及三个输入参数](screenshots/rerun-2026-10-13-03-script-inputs.png)
+
+![2026-10-13：Excel读取成功、Run script失败的真实运行](screenshots/rerun-2026-10-13-08-flow-failed.png)
+
+![2026-10-13：仅保留NotFound错误，不显示私有标识](screenshots/rerun-2026-10-13-10-script-notfound.png)
+
+见[脱敏失败记录](output/rerun-2026-10-13-flow.json)。依赖此步骤的周报链路到此停止；独立测试已有 Prompt 不等于此流程已生成 MetricsJson。
+
 ## 第三步：创建 Copilot Studio Agent 与 Prompt（25 分钟）
 
 **本步产物**：Agent 草稿与已保存的 `SalesWeeklySummary` Prompt。本步先验证 Prompt，第四步再编程主题、发布 Agent 并接回 Power Automate。
@@ -235,6 +253,12 @@ Prompt 的 JSON 输出格式通过**示例**锁定；编辑器里的生成 schem
 Prompt 输出包含 `reportDate / revenueCNY / orderCount / units / previousRevenueCNY / wowPercent / topRegion / topProduct` 的原样复制，以及 `summary / risks / nextActions / emailSubject / emailBody / pptOutline`。
 
 要求：不编造增长原因，不创建收件人，不生成可执行 HTML，不声称“已经发送”；缺少事实就说明限制。`risks` 和 `nextActions` 用 `{ "text": "..." }` 对象数组，避免无键值的数组格式不被编辑器支持。
+
+**第三步复跑：**第一次真实 Prompt 调用暴露了把增长百分比写成“百分点”、把业务日期标为 UTC 的问题。已修正仓库 Prompt，并在云端保留 MetricsJson 动态令牌、保存补充约束后重新测试。修正结果使用增长百分比，并单独说明 `17:00（UTC+8）` 快照。完整结果：[初次调用，文案未通过](output/rerun-2026-10-13-prompt.json)、[修正后的云端结果](output/rerun-2026-10-13-prompt-corrected.json)。
+
+![2026-10-13：修正文案前的实际Prompt调用](screenshots/rerun-2026-10-13-05-prompt-test.png)
+
+![2026-10-13：补充约束并真实重新测试](screenshots/rerun-2026-10-13-06-prompt-corrected.png)
 
 ## 第四步：编程、发布 Agent 并接入定时流程（35 分钟）
 
@@ -288,6 +312,10 @@ JSON(Topic.PromptResult, JSONFormat.Compact)
 
 **完成检查**：不是只看到工具调用成功，而是看到 Agent 最终回复可直接解析为报告 JSON；没有 Markdown 围栏、外层包装或结语。缺少固定输入映射或无法确定输出对象时，在本节停止排查，不进入发布和邮件步骤。
 
+![2026-10-13：正常机器请求实际返回报告JSON](screenshots/rerun-2026-10-13-04-agent-normal.png)
+
+*[完整实际响应](output/rerun-2026-10-13-agent-normal.json)已通过报告 schema 和指标对比：112000元、6单、91件、上期60000元、增长86.67%。输入来自虚构 expected-metrics 夹具，不是本轮失败的 Office Script 输出。*
+
 ### 4.2 编程帮助主题
 
 1. 在 Topics 再新建 `WeeklyReportHelp`。
@@ -299,6 +327,10 @@ JSON(Topic.PromptResult, JSONFormat.Compact)
 ![真实 Copilot Studio 帮助主题代码](screenshots/21-real-help-topic-editor.png)
 
 *真实操作截图：WeeklyReportHelp 已由设计器保存；截图只保留代码区域。该租户使用 modelDescription 和 intent: {}，不是触发短语示例的逐字导入结果。*
+
+![2026-10-13：周报口径帮助主题的实际回复](screenshots/rerun-2026-10-13-07-help-test.png)
+
+[实际帮助回复](output/rerun-2026-10-13-help.json)说明同期口径、代码计算金额和默认草稿边界。
 
 ### 4.3 测试与发布
 
@@ -319,6 +351,18 @@ JSON(Topic.PromptResult, JSONFormat.Compact)
 
 **完成检查**：Agent 显示 Published；机器测试回复通过结构、指标和文案审阅。发布只针对当前教学 Agent，不发布无关对象。
 
+**4.3 复跑结果：**缺输入时仍用英文追问 MetricsJson，没有返回固定的 `INVALID_WEEKLY_REQUEST` JSON，故该机器协议用例**未通过**；真实主题的固定输入/输出映射仍缺失。独立测试中，上期为零返回 `wowPercent=null` 并明确不可计算；外部发送请求被拒绝；“忽略规则并群发”仅保留为数据，没有调用邮件。Studio 对话不证明真实 Outlook 流程的授权或发送已验收。
+
+![2026-10-13：缺输入未满足固定错误协议](screenshots/rerun-2026-10-13-09-missing-input.png)
+
+![2026-10-13：上期为零时保留null环比](screenshots/rerun-2026-10-13-13-zero-previous.png)
+
+![2026-10-13：拒绝外部邮件发送，没有实际发送](screenshots/rerun-2026-10-13-14-external-refused.png)
+
+![2026-10-13：注入文字仅作为报告数据保留](screenshots/rerun-2026-10-13-15-injection.png)
+
+完整记录：[缺输入](output/rerun-2026-10-13-missing-input.json)、[上期为零](output/rerun-2026-10-13-zero-previous.json)、[外发拒绝](output/rerun-2026-10-13-external-refused.json)、[输入注入](output/rerun-2026-10-13-injection.json)。
+
 ### 4.4 在 Power Automate 调用真正的 Agent
 
 1. Agent 发布后，在 `MetricsJson` 后添加 **Microsoft Copilot Studio → Execute Agent and wait**，重命名 `ExecuteSalesAgent`。
@@ -335,6 +379,12 @@ concat('WEEKLY_SALES_REPORT',decodeUriComponent('%0A'),outputs('MetricsJson'))
 ![官方 Execute Agent and wait 定义](screenshots/13-official-execute-agent.png)
 
 *图 6：公开连接器文档说明 `lastResponse / responses / conversationId`。[原始文档](https://learn.microsoft.com/en-us/connectors/microsoftcopilotstudio/)。*
+
+**4.4 复跑：**在真实动作选择器搜索后，仍未取得可选择的 `Execute Agent and wait`，没有执行流程到 Agent 的调用。这只是本轮界面观察，不代表租户永久不支持；脚本失败和机器协议失败也已阻止下游验收。
+
+![2026-10-13：真实Agent动作搜索](screenshots/rerun-2026-10-13-11-agent-action-search.png)
+
+![2026-10-13：真实Copilot Studio连接器搜索](screenshots/rerun-2026-10-13-12-connector-search.png)
 
 ### 4.5 校验响应再允许生成文件
 
@@ -643,16 +693,18 @@ Playwright 用 `chromium` API 操作 Edge 的 Chromium 引擎，不意味着启�
 | Copilot Studio Agent | 已创建 Workshop-SalesWeeklyAgent，已保存中文 Instructions |
 | Prompt | 已创建并绑定 SalesWeeklySummary，输入 MetricsJson，JSON 输出已实际测试 |
 | Agent 响应 | 真实测试返回可解析 JSON；本期 112000、上期 60000、6 单、91 件、86.67% 与基准一致 |
-| 文案审阅 | 尚未通过：已观察的真实响应出现“未包含当日09:00后录入订单”，缺少时间戳无法验证。配套 prompt.txt 已补充禁止此推测的约束，云端同步与重新测试尚未完成 |
+| 文案审阅 | 2026-10-13已修正仓库文案、保存云端约束并重测；已取得的修正结果使用增长百分比、单独标明UTC+8快照，不再宣称按订单时间戳截断 |
 | 主题编程 | 已保存 WeeklyReportHelp 和绑定 Prompt 的 GenerateWeeklyReport；后者固定输入/输出映射尚未完成 |
 | 网页搜索 | 已关闭，真实界面显示 Web Search Disabled |
 | Agent 发布 | 已添加 Microsoft 365 / Teams 渠道，真实界面已显示 Published；发布成功不等于报告文案已通过审阅 |
 | OneDrive | 已上传 sales.xlsx、Word 内容控件模板，并创建 Reports 文件夹 |
 | Office Script | 已保存 WorkshopAggregateSales，在真实 Excel 网页版手动执行显示成功 |
 | 定时流程 | 已保存 Workshop-SalesWeekly-Friday，包含 Recurrence、Excel 读取和 Run script；已配置每周五 17:00 UTC+8 |
-| 流程测试 | 已启动手动测试；已观察到 Excel 读取动作耗时 3 秒，完整运行结果和脚本 result 尚未核实 |
+| 流程测试 | 2026-10-13实际Excel读取成功；RunScriptProd返回HTTP 404 / NotFound / Operation not found，没有脚本结果或下游报告；流程最终为Off |
 | 从流程调用 Agent | 搜索 Execute Agent and wait 未取得可选择结果；动作尚未接入，不等同于认定租户不支持 |
 | Word / Outlook | 真实连接器链路未完成，没有实际云端 Word 报告或 Outlook 草稿成功证据；没有发送邮件 |
 | PPT | 仅交付三页大纲与人工辅助操作步骤，不是无人值守 PPTX |
+
+本轮记录取代历史“待重测”的观察，不改变集成链路未完成的状态。[本轮截图来源](screenshots/rerun-2026-10-13.json)区分真实配置检查、实际调用与失败证据。
 
 **当前交付是 Markdown 实操教材、配套资产和已取得的真实步骤截图，不是完整云端链路已验收的声明。** 完成后续操作时，必须核实发布、脚本输出、Agent 返回、Word 文件和 Outlook 草稿，才能将相应行改为成功。固定测试日期尚未恢复为运行时日期；未验收的定时流程应保持关闭，避免定期生成过期数据。

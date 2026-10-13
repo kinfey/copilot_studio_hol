@@ -1,9 +1,134 @@
 [
-  {"file":"03-real-private-team-create.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"私有测试团队创建表单；不是卡片执行结果"},
-  {"file":"04-real-cardhelp-code.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实 CardHelp 主题源码编辑器"},
-  {"file":"05-real-global-instructions.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实全局 Instructions 输入区域"},
-  {"file":"06-real-node-prompt.png","product":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"真实节点 Prompt 已修正为 riskNotes text 对象数组"},
-  {"file":"07-real-teams-review-card.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"专用实验频道真实投递的三按钮卡片，不代表 Planner 任务已创建"},
-  {"file":"08-real-card-response-received.png","product":"Microsoft Teams","method":"Playwright + Microsoft Edge","evidence":"批准按钮首次提交后，wait 动作更新原消息"},
-  {"file":"09-real-card-flow-success.png","product":"Power Automate","method":"Playwright + Microsoft Edge","evidence":"仅手动触发器与卡片 wait 动作的真实运行成功状态"}
+  {
+    "file": "03-real-private-team-create.png",
+    "product": "Microsoft Teams",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "私有测试团队创建表单；不是卡片执行结果"
+  },
+  {
+    "file": "04-real-cardhelp-code.png",
+    "product": "Copilot Studio",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "真实 CardHelp 主题源码编辑器"
+  },
+  {
+    "file": "05-real-global-instructions.png",
+    "product": "Copilot Studio",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "真实全局 Instructions 输入区域"
+  },
+  {
+    "file": "06-real-node-prompt.png",
+    "product": "Copilot Studio",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "真实节点 Prompt 已修正为 riskNotes text 对象数组"
+  },
+  {
+    "file": "07-real-teams-review-card.png",
+    "product": "Microsoft Teams",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "专用实验频道真实投递的三按钮卡片，不代表 Planner 任务已创建"
+  },
+  {
+    "file": "08-real-card-response-received.png",
+    "product": "Microsoft Teams",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "批准按钮首次提交后，wait 动作更新原消息"
+  },
+  {
+    "file": "09-real-card-flow-success.png",
+    "product": "Power Automate",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "仅手动触发器与卡片 wait 动作的真实运行成功状态"
+  },
+  {
+    "file": "rerun-2026-10-13-01-instructions.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:41:19.536Z",
+    "runDate": "2026-10-13",
+    "evidence": "Existing Lab 02 global instructions reopened for rerun."
+  },
+  {
+    "file": "rerun-2026-10-13-02-help-topic.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:41:28.640Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual CardHelp topic rerun; no card or Planner task should be created by this explanation."
+  },
+  {
+    "file": "rerun-2026-10-13-03-analysis-prompt.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:42:20.523Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual AnalyzeTaskRequest cloud Prompt retest with saved synthetic sample inputs."
+  },
+  {
+    "file": "rerun-2026-10-13-04-card-target.png",
+    "source": "https://make.preview.powerautomate.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:43:58.651Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual existing Flow bot/channel Message configuration; the static card was still used in new runs. Not evidence that an attempted card edit persisted."
+  },
+  {
+    "file": "rerun-2026-10-13-05-card-delivered.png",
+    "source": "https://teams.cloud.microsoft",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:53:48.625Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual newly delivered minimal test card, still using historical sample dates and request ID; no Planner task is created by this two-action flow."
+  },
+  {
+    "file": "rerun-2026-10-13-06-card-run.png",
+    "source": "https://make.preview.powerautomate.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:54:53.366Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual minimal wait-card rerun after submitting approval. Not evidence of a queue, Planner task or reminder."
+  },
+  {
+    "file": "rerun-2026-10-13-07-card-reject.png",
+    "source": "https://teams.cloud.microsoft",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:00:13.028Z",
+    "runDate": "2026-10-13",
+    "evidence": "Separate real minimal-flow test card with a return reason entered before clicking Return; fixed historical ID/times are display-only."
+  },
+  {
+    "file": "rerun-2026-10-13-08-reject-run.png",
+    "source": "https://make.preview.powerautomate.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:01:12.328Z",
+    "runDate": "2026-10-13",
+    "evidence": "Separate real minimal wait-card run: Return with a reason, both actions Succeeded; no server-side rejection handling or task was executed."
+  },
+  {
+    "file": "rerun-2026-10-13-09-card-assign.png",
+    "source": "https://teams.cloud.microsoft",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:03:22.584Z",
+    "runDate": "2026-10-13",
+    "evidence": "Separate real minimal-flow card with backup selected before clicking Assign; no Planner task or actual assignee mapping is configured."
+  },
+  {
+    "file": "rerun-2026-10-13-10-assign-run.png",
+    "source": "https://make.preview.powerautomate.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T10:03:49.116Z",
+    "runDate": "2026-10-13",
+    "evidence": "Separate real minimal wait-card run: Assign returned backup and both actions Succeeded; no actual task, authorization branch or reminder."
+  }
 ]

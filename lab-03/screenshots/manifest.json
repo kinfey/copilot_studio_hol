@@ -1,17 +1,228 @@
 [
-  {"file":"01-official-mcd-endpoint.png","kind":"官方文档","source":"https://open.mcd.cn/mcp/doc","heading":"2.1 接入地址","method":"Playwright + Microsoft Edge","evidence":"官方端点、Streamable HTTP及Authorization头；不是账号认证成功证据"},
-  {"file":"02-real-agent-instructions.png","kind":"真实产品操作","source":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"优惠券Agent全局指令；不含密钥"},
-  {"file":"03-real-mcp-configuration.png","kind":"真实产品操作","source":"Copilot Studio","method":"Playwright + Microsoft Edge","evidence":"官方端点与API key Header配置；不包含密钥值"},
-  {"file":"04-real-recurrence-0800.png","kind":"真实产品操作","source":"Power Automate","method":"Playwright + Microsoft Edge","evidence":"每天北京时间08:00配置，未保存启用完整通知流"},
-  {"file":"05-official-my-coupons.png","kind":"官方文档","source":"https://open.mcd.cn/mcp/doc","heading":"4.4.3 我的优惠券查询","method":"Playwright + Microsoft Edge","evidence":"无参数只读查询工具，文档示例不代表今日个人优惠"},
-  {"file":"06-official-mcp-tool-selection.png","kind":"官方文档","source":"https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-components-to-agent","heading":"Customize tool selection from an MCP server in your agent","method":"Playwright + Microsoft Edge","evidence":"Allow all关闭和新工具默认禁用"},
-  {"file":"07-official-execute-agent-wait.png","kind":"官方文档","source":"https://learn.microsoft.com/en-us/connectors/microsoftcopilotstudio/","heading":"Execute Agent and wait","method":"Playwright + Microsoft Edge","evidence":"定时流调用Agent并返回lastResponse，非真实运行截图"},
-  {"file":"08-real-connection-not-found.png","kind":"真实产品操作","source":"Power Automate Connections","method":"Playwright + Microsoft Edge","evidence":"按McD-Coupons-Lab03筛选连接，无匹配记录；不证明Token无效"},
-  {"file":"09-real-dlp-block.png","kind":"真实产品操作","source":"Power Apps Custom connectors","method":"Playwright + Microsoft Edge","evidence":"从实际连接器直接创建连接，产品明确返回DLP策略阻止；未验证Token"},
-  {"file":"10-real-simulation-topic.png","kind":"真实产品操作","source":"Copilot Studio Topics","method":"Playwright + Microsoft Edge","evidence":"保存后的SimulateMeal数值提问主题"},
-  {"file":"11-real-studio-instructions.png","kind":"真实产品操作","source":"Copilot Studio Instructions","method":"Playwright + Microsoft Edge","evidence":"仅Studio离线模拟指令"},
-  {"file":"12-real-studio-budget-pass.png","kind":"真实产品操作","source":"Copilot Studio Test","method":"Playwright + Microsoft Edge","evidence":"教学1汉堡1咖啡预算25元，真实主题返回18元"},
-  {"file":"15-real-connector-found.png","kind":"真实产品操作","source":"Power Apps Custom connectors","method":"Playwright + Microsoft Edge","evidence":"已保存连接器定义存在，不证明连接成功"},
-  {"file":"16-real-agent-no-tools.png","kind":"真实产品操作","source":"Copilot Studio Tools","method":"Playwright + Microsoft Edge","evidence":"目标Agent显示Create your first tool，尚无MCP绑定"},
-  {"file":"17-real-today-coupons-test.png","kind":"真实产品操作","source":"Copilot Studio Test","method":"Playwright + Microsoft Edge","evidence":"直接询问今天有什么优惠券；真实回答MCP尚未连通，未进入模拟订餐"}
+  {
+    "file": "01-official-mcd-endpoint.png",
+    "kind": "官方文档",
+    "source": "https://open.mcd.cn/mcp/doc",
+    "heading": "2.1 接入地址",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "官方端点、Streamable HTTP及Authorization头；不是账号认证成功证据"
+  },
+  {
+    "file": "02-real-agent-instructions.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "优惠券Agent全局指令；不含密钥"
+  },
+  {
+    "file": "03-real-mcp-configuration.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "官方端点与API key Header配置；不包含密钥值"
+  },
+  {
+    "file": "04-real-recurrence-0800.png",
+    "kind": "真实产品操作",
+    "source": "Power Automate",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "每天北京时间08:00配置，未保存启用完整通知流"
+  },
+  {
+    "file": "05-official-my-coupons.png",
+    "kind": "官方文档",
+    "source": "https://open.mcd.cn/mcp/doc",
+    "heading": "4.4.3 我的优惠券查询",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "无参数只读查询工具，文档示例不代表今日个人优惠"
+  },
+  {
+    "file": "06-official-mcp-tool-selection.png",
+    "kind": "官方文档",
+    "source": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-components-to-agent",
+    "heading": "Customize tool selection from an MCP server in your agent",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "Allow all关闭和新工具默认禁用"
+  },
+  {
+    "file": "07-official-execute-agent-wait.png",
+    "kind": "官方文档",
+    "source": "https://learn.microsoft.com/en-us/connectors/microsoftcopilotstudio/",
+    "heading": "Execute Agent and wait",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "定时流调用Agent并返回lastResponse，非真实运行截图"
+  },
+  {
+    "file": "08-real-connection-not-found.png",
+    "kind": "真实产品操作",
+    "source": "Power Automate Connections",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "按McD-Coupons-Lab03筛选连接，无匹配记录；不证明Token无效"
+  },
+  {
+    "file": "09-real-dlp-block.png",
+    "kind": "真实产品操作",
+    "source": "Power Apps Custom connectors",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "从实际连接器直接创建连接，产品明确返回DLP策略阻止；未验证Token"
+  },
+  {
+    "file": "10-real-simulation-topic.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio Topics",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "保存后的SimulateMeal数值提问主题"
+  },
+  {
+    "file": "11-real-studio-instructions.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio Instructions",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "仅Studio离线模拟指令"
+  },
+  {
+    "file": "12-real-studio-budget-pass.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio Test",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "教学1汉堡1咖啡预算25元，真实主题返回18元"
+  },
+  {
+    "file": "15-real-connector-found.png",
+    "kind": "真实产品操作",
+    "source": "Power Apps Custom connectors",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "已保存连接器定义存在，不证明连接成功"
+  },
+  {
+    "file": "16-real-agent-no-tools.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio Tools",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "目标Agent显示Create your first tool，尚无MCP绑定"
+  },
+  {
+    "file": "17-real-today-coupons-test.png",
+    "kind": "真实产品操作",
+    "source": "Copilot Studio Test",
+    "method": "Playwright + Microsoft Edge",
+    "evidence": "直接询问今天有什么优惠券；真实回答MCP尚未连通，未进入模拟订餐"
+  },
+  {
+    "file": "rerun-2026-10-13-01-instructions.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:28:32.019Z",
+    "runDate": "2026-10-13",
+    "evidence": "Reopened existing MCP experiment agent; instructions distinguish real read-only query from optional simulation."
+  },
+  {
+    "file": "rerun-2026-10-13-02-coupons-test.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:29:16.959Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual completed direct coupon query; real MCP remains unbound and no coupons were retrieved."
+  },
+  {
+    "file": "rerun-2026-10-13-03-no-mcp-tools.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:29:18.355Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual Tools page during rerun: no tool is bound; a connector definition is not a working MCP connection."
+  },
+  {
+    "file": "rerun-2026-10-13-04-burger-question.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:19.529Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual simulation entry and first numeric question; no MCP call."
+  },
+  {
+    "file": "rerun-2026-10-13-05-question.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:21.502Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual numeric input 1 and following question."
+  },
+  {
+    "file": "rerun-2026-10-13-06-question.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:25.034Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual numeric input 2 and following question."
+  },
+  {
+    "file": "rerun-2026-10-13-07-within-budget.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:27.037Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual independent cloud simulation case: within-budget; expected branch observed."
+  },
+  {
+    "file": "rerun-2026-10-13-07-over-budget.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:41.720Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual independent cloud simulation case: over-budget; expected branch observed."
+  },
+  {
+    "file": "rerun-2026-10-13-07-fractional.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:30:54.358Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual independent cloud simulation case: fractional; expected branch observed."
+  },
+  {
+    "file": "rerun-2026-10-13-07-empty-cart.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:31:07.075Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual independent cloud simulation case: empty-cart; expected branch observed."
+  },
+  {
+    "file": "rerun-2026-10-13-07-negative.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:31:18.823Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual independent cloud simulation case: negative; expected branch observed."
+  },
+  {
+    "file": "rerun-2026-10-13-08-claim-refused.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:31:24.994Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual agent response to 领取教学券; no real transaction is authorized or executed."
+  },
+  {
+    "file": "rerun-2026-10-13-08-payment-refused.png",
+    "source": "https://copilotstudio.preview.microsoft.com",
+    "kind": "actual-product-rerun",
+    "method": "Playwright + Microsoft Edge",
+    "capturedAt": "2026-10-13T09:33:52.270Z",
+    "runDate": "2026-10-13",
+    "evidence": "Actual completed payment refusal; no payment or real order was attempted."
+  }
 ]

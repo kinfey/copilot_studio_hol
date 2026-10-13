@@ -7,6 +7,8 @@
 
 ## 第一步：准备环境与专用测试位置
 
+> **2026-10-13 复跑：**通过 Playwright 控制 Microsoft Edge 复用原有 Workshop 资源，没有新建团队、队列、计划、worker 或提醒流程。用三次独立真实运行分别测试最小卡片的批准、打回、指派响应；不代表正式主线已完成。
+
 1. 使用 **Microsoft Edge** 登录 Copilot Studio、Power Automate、Teams 和 Planner。选择同一个有权使用的 Power Platform 环境。
 2. 确认具备 Copilot Studio、AI Builder Prompt、Power Automate 相关许可及连接权限。Teams 管理员需允许 Workflows 应用；Planner 使用 **Basic plan**，不要选择 Premium plan。
 3. 在 Teams 选择 **New items → New team**，名称填写 `Workshop-Lab02-Private`，可见性保留 **Private**，首个频道填写 `Lab02-Review`。
@@ -34,6 +36,8 @@
 
 **实验原则：**提示词说明意图，Schema 校验输出，连接器身份与服务端白名单实施授权。不要把“模型说已批准”当成审核结果。`Global.*` 变量只在用户会话跨主题共享，不是全组织持久队列。
 
+![2026-10-13：重新检查原有任务审核全局指令](screenshots/rerun-2026-10-13-01-instructions.png)
+
 ## 第三步：创建并测试任务分析 Prompt
 
 1. 在智能体 **Tools → Add a tool → Prompt** 新建 `AnalyzeTaskRequest`。
@@ -47,6 +51,10 @@
 ![真实节点 Prompt，riskNotes 使用 text 对象数组](screenshots/06-real-node-prompt.png)
 
 **完成检查：**测试输出与 [analysis.schema.json](agent/analysis.schema.json) 一致。`needsClarification=true` 时先追问，不能提交卡片。模型不得决定实际用户 ID、Teams 频道或 Planner 计划。
+
+![2026-10-13：实际重新调用AnalyzeTaskRequest云端Prompt](screenshots/rerun-2026-10-13-03-analysis-prompt.png)
+
+[本轮实际六字段分析](output/rerun-2026-10-13-analysis.json)通过 `validateAnalysis`，`riskNotes` 仍为 `{text}` 对象数组。该调用没有提交申请或创建任务。
 
 ## 第四步：创建帮助主题和任务申请主题
 
@@ -64,6 +72,10 @@
 ![真实 CardHelp 主题代码编辑器](screenshots/04-real-cardhelp-code.png)
 
 本次真实设计器代码另存为 [card-help-topic.real.yaml](agent/card-help-topic.real.yaml)，与教学示例分开保存。
+
+![2026-10-13：CardHelp实际解释按钮与截止、提醒的区别](screenshots/rerun-2026-10-13-02-help-topic.png)
+
+见[本轮帮助对话](output/rerun-2026-10-13-help.json)；该帮助主题没有发送卡片。
 
 ### 4.2 申请主题
 
@@ -143,6 +155,30 @@
 ![真实 Power Automate 卡片测试流运行成功](screenshots/09-real-card-flow-success.png)
 
 本次真实运行返回 `decision=approve`、`assigneeKey=self`、`requestId=LAB02-REQ-001`，已保存 [脱敏执行记录](output/card-response.real.json)。流程由设计器自动命名为 `Button -> Post adaptive card and wait for a response`。此成功只证明卡片投递与首次响应链路；未证明任务创建、授权分支或提醒已执行。
+
+**2026-10-13 复跑该原有最小流程：**检查卡片配置，点击 **Run → Run flow**，仅进入 `Workshop-Lab02-Private / Lab02-Review`，每张新卡只点击一个按钮一次，然后查看对应新运行的 wait 动作输出。其他按钮分别启动**新的运行和卡片**，不重复提交已消费卡片。
+
+![2026-10-13：原有Flow bot与频道卡片配置](screenshots/rerun-2026-10-13-04-card-target.png)
+
+![2026-10-13：新卡片真实投递到专用实验频道](screenshots/rerun-2026-10-13-05-card-delivered.png)
+
+![2026-10-13：批准响应的真实运行Succeeded](screenshots/rerun-2026-10-13-06-card-run.png)
+
+![2026-10-13：另一张新卡填写教学打回原因](screenshots/rerun-2026-10-13-07-card-reject.png)
+
+![2026-10-13：打回响应的真实运行Succeeded](screenshots/rerun-2026-10-13-08-reject-run.png)
+
+![2026-10-13：另一张新卡选择backup后提交指派](screenshots/rerun-2026-10-13-09-card-assign.png)
+
+![2026-10-13：指派响应的真实运行Succeeded](screenshots/rerun-2026-10-13-10-assign-run.png)
+
+| 独立真实运行 | 连接器实际返回的 `data` | 脱敏输出 |
+|---|---|---|
+| 批准 | `decision=approve`、`assigneeKey=self` | [批准](output/rerun-2026-10-13-approve-response.json) |
+| 有原因打回 | `decision=reject`、`assigneeKey=self`、教学 `reviewComment` | [打回](output/rerun-2026-10-13-reject-response.json) |
+| 指派备用负责人 | `decision=assign`、`assigneeKey=backup` | [指派](output/rerun-2026-10-13-assign-response.json) |
+
+**限制：**三次新运行实际仍使用已部署的静态 `LAB02-REQ-001` 卡片，截止为2026-10-13 17:00 UTC+8、提醒16:00，执行时已经过期。尝试在 UI 修改的内容没有持久化到实际卡片，故不提供“配置更新成功”的结果。这些日期和编号仅为显示夹具，不能用于正式入队或提醒验收。卡片“创建任务”文字描述完整主线的目标；此两动作流程仅收集响应，不执行审核人授权校验、服务端打回原因校验、真实backup人员映射、任务创建或提醒。响应记录不包含headers或响应者身份。
 
 不要把普通 **Post card** 和另一条 **When someone responds** 监听器组合替代 wait 动作。每张 wait 卡片只消费首次提交；无权用户抢先提交或打回缺原因时必须记录失败并重新发新卡，不默认批准。
 
@@ -229,10 +265,12 @@ npm test
 | AnalyzeTaskRequest | 已创建、测试并绑定；云端 riskNotes 提示词已同步修正为 text 对象数组并保存 |
 | CardHelp | 已在真实设计器建立并保存消息节点，已打开代码编辑器核对 |
 | 私有 Teams 团队和标准频道 | 已真实创建，仅创建者；截图显示创建配置 |
-| Teams wait 卡片动作 | 已真实投递专用频道，三按钮可见；点击批准后收到响应，Power Automate 运行 Succeeded，截图与脱敏记录已保存 |
-| Planner 计划 | 实验组搜索暂未出现，尚未创建 |
+| Teams wait 卡片动作 | 2026-10-13三张新卡的独立运行分别返回approve/self、reject/原因、assign/backup；三个最小流运行均Succeeded，已保存真实响应字段 |
+| Planner 计划 | 历史搜索未找到实验组；本轮仅复用资源，没有创建或新部署计划 |
 | SharePoint 队列及完整三条流程 | 尚未部署完成 |
-| 打回/指派分支、Teams Agent 发布、真实任务与提醒 | 尚未端到端验证；最小卡片测试的批准响应不代表正式审批或任务创建 |
+| 正式授权/打回/指派分支、Teams Agent 发布、真实任务与提醒 | 未端到端执行；三种卡片响应不证明正式审批、任务创建或提醒成功 |
+
+见[本轮截图来源](screenshots/rerun-2026-10-13.json)。第五至第六步、第七至第九步的正式部分仍因队列、worker、计划及提醒组件未部署而阻塞，不能用最小卡片响应测试替代。
 
 ## 官方参考
 

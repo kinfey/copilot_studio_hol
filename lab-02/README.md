@@ -7,6 +7,8 @@
 
 ## Step One: Prepare the Environment and Dedicated Test Locations
 
+> **Rerun — 2026-10-13:** Existing Workshop resources were reused through Playwright and Microsoft Edge. No new team, queue, plan, worker, or reminder flow was created. Three separate real runs tested the minimal card's approve, return, and assign responses; they do not complete the production workflow.
+
 1. Sign in to Copilot Studio, Power Automate, Teams, and Planner using **Microsoft Edge**. Select the same authorized Power Platform environment.
 2. Confirm the required Copilot Studio, AI Builder Prompt, and Power Automate licenses and connection permissions. The Teams administrator must allow the Workflows app; use a Planner **Basic plan**, not a Premium plan.
 3. In Teams, select **New items → New team**, enter `Workshop-Lab02-Private`, retain **Private** visibility, and name the first channel `Lab02-Review`.
@@ -25,6 +27,8 @@
 4. Keep Web Search off. This lab does not need internet information to fill in task facts or assignees.
 
 ![Real agent global Instructions](screenshots/05-real-global-instructions.png)
+
+![2026-10-13: existing task-review instructions inspected again](screenshots/rerun-2026-10-13-01-instructions.png)
 
 | Level | Configuration location | Scope and applicable scenarios |
 |---|---|---|
@@ -46,6 +50,10 @@
 
 ![Real node Prompt: riskNotes uses an array of text objects](screenshots/06-real-node-prompt.png)
 
+![2026-10-13: actual AnalyzeTaskRequest cloud Prompt rerun](screenshots/rerun-2026-10-13-03-analysis-prompt.png)
+
+The [new actual six-field analysis](output/rerun-2026-10-13-analysis.json) passed `validateAnalysis`; `riskNotes` remains an array of `{text}` objects. This call did not submit a request or create a task.
+
 **Completion check:** Test output matches [analysis.schema.json](agent/analysis.schema.json). When `needsClarification=true`, ask a follow-up first; do not submit a card. The model must not choose actual user IDs, Teams channels, or Planner plans.
 
 ## Step Four: Create Help and Task Request Topics
@@ -66,6 +74,10 @@
 ![Real CardHelp topic code editor](screenshots/04-real-cardhelp-code.png)
 
 The code from this real designer session is saved separately as [card-help-topic.real.yaml](agent/card-help-topic.real.yaml), distinct from the teaching example.
+
+![2026-10-13: CardHelp actually explains buttons and deadline/reminder differences](screenshots/rerun-2026-10-13-02-help-topic.png)
+
+See the [new help conversation](output/rerun-2026-10-13-help.json); no card was sent by this help-topic test.
 
 ### 4.2 Request Topic
 
@@ -145,6 +157,30 @@ The screenshot is from the dedicated lab channel, not a local page. This minimal
 ![Real successful Power Automate card-test flow run](screenshots/09-real-card-flow-success.png)
 
 This real run returned `decision=approve`, `assigneeKey=self`, and `requestId=LAB02-REQ-001`; the [sanitized execution record](output/card-response.real.json) is saved. The designer automatically named the flow `Button -> Post adaptive card and wait for a response`. Success proves only card delivery and the first-response workflow, not task creation, authorization branches, or reminders.
+
+**2026-10-13 rerun, using that existing minimal flow:** Inspect its card configuration, select **Run → Run flow**, open only `Workshop-Lab02-Private / Lab02-Review`, submit one button once, and inspect that new run's wait-action outputs. Repeat with a **new run and a new card** for each other button; do not resubmit an already consumed card.
+
+![2026-10-13: existing Flow bot/channel card configuration](screenshots/rerun-2026-10-13-04-card-target.png)
+
+![2026-10-13: new real card delivered to the dedicated lab channel](screenshots/rerun-2026-10-13-05-card-delivered.png)
+
+![2026-10-13: approval run actually Succeeded](screenshots/rerun-2026-10-13-06-card-run.png)
+
+![2026-10-13: separate card with a teaching return reason entered](screenshots/rerun-2026-10-13-07-card-reject.png)
+
+![2026-10-13: return-response run actually Succeeded](screenshots/rerun-2026-10-13-08-reject-run.png)
+
+![2026-10-13: separate card with backup selected before assigning](screenshots/rerun-2026-10-13-09-card-assign.png)
+
+![2026-10-13: assignment-response run actually Succeeded](screenshots/rerun-2026-10-13-10-assign-run.png)
+
+| Independent real run | Observed connector `data` | Sanitized output |
+|---|---|---|
+| Approve | `decision=approve`, `assigneeKey=self` | [Approval](output/rerun-2026-10-13-approve-response.json) |
+| Return with a reason | `decision=reject`, `assigneeKey=self`, teaching `reviewComment` | [Return](output/rerun-2026-10-13-reject-response.json) |
+| Assign backup | `decision=assign`, `assigneeKey=backup` | [Assignment](output/rerun-2026-10-13-assign-response.json) |
+
+**Limitations:** All three new runs still used the deployed static `LAB02-REQ-001` card, deadline 2026-10-13 17:00 UTC+8 and reminder 16:00, already past at execution. An attempted UI edit did not persist into the actual card; no “updated configuration” result is presented. These dates and IDs are display fixtures only, unsuitable for production queuing or reminder acceptance. The card's “creates a task” text describes the intended complete workflow; this two-action flow only captures a response. It does not validate reviewer authorization, require a rejection reason server-side, map a real backup assignee, create tasks, or send reminders. Response records exclude headers and responder identity.
 
 Do not replace the wait action with an ordinary **Post card** plus a separate **When someone responds** listener. Each wait card consumes only the first submission; if an unauthorized user submits first or a rejection has no reason, record failure and issue a new card rather than approving by default.
 
@@ -231,10 +267,12 @@ The generation script saves offline examples only; it does not call the tenant, 
 | AnalyzeTaskRequest | Created, tested, and bound; cloud riskNotes prompt synchronized to use a text-object array and saved |
 | CardHelp | Message node created and saved in the real designer; code editor opened for verification |
 | Private Teams team and standard channel | Created in the real service with only the creator; screenshot shows creation configuration |
-| Teams wait card action | Delivered to the dedicated channel; three buttons visible; approval click received a response; Power Automate run Succeeded; screenshots and sanitized record saved |
-| Planner plan | Lab group has not yet appeared in search; plan not created |
+| Teams wait card action | 2026-10-13: three new cards and independent runs returned approve/self, reject/reason and assign/backup; all minimal-flow runs Succeeded; actual response fields saved |
+| Planner plan | Historically the lab group did not appear in search; no plan was created or newly provisioned during this reuse-only rerun |
 | SharePoint queue and all three complete flows | Deployment not yet complete |
-| Return/assignment branches, Teams agent publication, real tasks and reminders | Not yet validated end to end; approval response in the minimal card test is not formal approval or task creation |
+| Production authorization/return/assignment branches, Teams agent publication, real tasks and reminders | Not executed end to end; three captured card responses do not prove formal approval, task creation, or reminders |
+
+See [dated screenshot provenance](screenshots/rerun-2026-10-13.json). Steps Five–Six and the production parts of Steps Seven–Nine remain blocked by undeployed queue/worker/plan/reminder components, not by the minimal card-response test.
 
 ## Official References
 

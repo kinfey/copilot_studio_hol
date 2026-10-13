@@ -6,6 +6,8 @@
 
 ## Step One: Prepare Contracts, Policies, and Permission Isolation
 
+> **Rerun — 2026-10-13:** Playwright controlled Microsoft Edge against the existing legal teaching agent. Native policy Q&A, the cloud rewrite Prompt, a real contract attachment, and a complete-text fallback were executed. No controlled Azure retrieval or online Excel audit report was generated.
+
 1. Sign in to Copilot Studio, Power Automate, SharePoint, and Excel Online using Edge and select an authorized lab environment.
 2. Download the [teaching contract](data/contract.md), [original legal knowledge](data/policy.raw.md), and [metadata](data/metadata.json). Upload teaching materials only, not real customer contracts or personal data.
 3. Prepare a dedicated SharePoint legal knowledge library and contract staging area with separate permissions. Author-uploaded “legal policies” are shared knowledge; a user-uploaded “contract for review” is a single audit input and **must not automatically enter the shared knowledge base**.
@@ -28,6 +30,8 @@
 5. For Word/PDF extensions, use approved text extraction/OCR and retain clause numbers, page numbers, table structures, and original file locations. Do not treat contract images as successfully extracted text.
 
 **Checkpoint:** Cleaning must not change negations, numbers, exceptions, or approval conditions; mismatched column counts must raise errors. The supplied script does not parse Word/PDF; it handles already extracted Markdown and tab-separated tables only.
+
+**Local rerun:** `prepare.mjs` regenerated cleaned policies, chunks, three hybrid requests and the dual-citation check of the existing human-labeled fixture. These are local outputs, not newly retrieved rules or model-generated audit findings. The existing offline XLSX was not regenerated in this rerun.
 
 ## Step Three: Chunk by Legal Clause Meaning (Optimization Dimension 2)
 
@@ -76,6 +80,8 @@
 
 ![Real contract agent global instructions](screenshots/01-real-agent-instructions.png)
 
+![2026-10-13: original contract-review instructions inspected](screenshots/rerun-2026-10-13-01-instructions.png)
+
 3. **Knowledge → Add knowledge → Upload file**: select `output/policy.clean.md`, then **Add to agent**.
 
 ![Real Copilot Studio teaching policy upload](screenshots/02-real-policy-upload.png)
@@ -85,6 +91,12 @@
 
 ![Real policy.clean.md Ready status, cropped to the status cell](screenshots/07-real-knowledge-ready.png)
 
+![2026-10-13: actual policy.clean.md knowledge row is Ready](screenshots/rerun-2026-10-13-02-knowledge-ready.png)
+
+![2026-10-13: actual policy baseline answers 30 days and cites policy.clean.md](screenshots/rerun-2026-10-13-03-knowledge-test.png)
+
+The [completed live policy answer](output/rerun-2026-10-13-knowledge-test.json) states deletion within 30 days after termination, written Legal approval beyond 30 days, and the fictional teaching-rule boundary. This is native file knowledge, not a controlled Azure search result.
+
 ## Step Seven: Three Precise Retrieval Subquestions (Optimization Dimension 5)
 
 1. **Tools → Add a tool → Prompt**; name it `RewriteContractQueriesLab04`.
@@ -93,6 +105,10 @@
 4. **Output format → JSON → Test**. The result must be exactly three `{text}` objects; duplicates, invented numbers, and generated authorization groups are not allowed.
 
 ![Real contract Prompt three-subquestion test](screenshots/03-real-multi-query-test.png)
+
+![2026-10-13: actual retention/liability/cross-border Prompt retest](screenshots/rerun-2026-10-13-04-prompt-test.png)
+
+The [new cloud Prompt result](output/rerun-2026-10-13-queries.json) passed `validateQueries`: three distinct `{text}` objects. No real index was queried by this Prompt test.
 
 5. Save → Add and configure. Real results are saved in [queries.real.json](output/queries.real.json); this file is authoritative for the complete text because designer screenshots may horizontally truncate long lines.
 6. This Prompt is designed for the teaching contract's three clause categories. For other contracts, parse actual clause types first and then select three retrieval angles; do not ignore other important clauses.
@@ -115,6 +131,16 @@
 
 6. In the flow, verify verbatim that contractQuote belongs to the current contract and ruleQuote to the corresponding chunk; validate rule scope, access permissions, chunkId, and rule version.
 7. Keep “信息不足/未覆盖” (insufficient information/not covered) for clauses without evidence; “no violation retrieved” does not mean “compliant.” Explicitly record coverage for every clause.
+
+**Actual Step Eight rerun:** Add `data/contract.md` (527 bytes) as a Test attachment, then send it with the review request. The final response still asks for the contract text; seeing an uploaded file does not establish extraction. In a **new session**, send the complete fictional contract as text and wait for the finished reply, not “Processing.”
+
+![2026-10-13: contract attachment added before sending](screenshots/rerun-2026-10-13-05-contract-upload.png)
+
+![2026-10-13: sent contract attachment still leads to a text request](screenshots/rerun-2026-10-13-06-contract-result.png)
+
+![2026-10-13: completed full-text teaching review with policy citation](screenshots/rerun-2026-10-13-07-contract-text-result.png)
+
+Records: [actual attachment conversation](output/rerun-2026-10-13-contract-upload-test.json), [completed full-text fallback](output/rerun-2026-10-13-contract-text-test.json). The fallback identifies three teaching-rule conflicts and Article Four as not covered, and cites `policy.clean.md`. However, it translates the Chinese quotes and does not supply valid `chunkId`/citation URL fields. It therefore does **not** pass the required verbatim dual-citation, structured audit contract, or file-upload/parsing acceptance. Its narrative claim about an approved scope is not evidence of enforced custom filtering. No report or external write was performed.
 
 ### Optional Custom Knowledge Source Integration
 
@@ -142,6 +168,10 @@
 5. The generator explicitly stores cells as text so content beginning with `=` does not become a formula; there are no calculation formulas. Do not use this exporter, which accepts offline fixtures only, to present new real results as a production export.
 
 ### 9.2 Online Output with Power Automate
+
+**Rerun boundary:** No existing audit worker or controlled retrieval tool was executed, and no online Excel rows were written. The currently observed Tools list shows the rewrite Prompt, not a successful complete audit pipeline. SharePoint metadata, authorized retrieval, file extraction, exact citations, and the online worker remain prerequisites; do not use the offline workbook as an online result.
+
+![2026-10-13: actual contract agent tool list](screenshots/rerun-2026-10-13-08-tools.png)
 
 1. Save the teaching workbook as a template in an **authorized report library**. Copy it into a separate file for each audit; do not allow multiple users to write concurrently to one template.
 2. Clear the four teaching records from AuditRows in the new file, preserving headers and table structure; update Readme with the execution type and actual audit sources.
@@ -181,12 +211,17 @@ Record relevant-chunk Recall@5, dual-citation accuracy, uncovered rate, incorrec
 |---|---|
 | Legal agent, global instructions, Web Search disabled | Performed in real Edge sessions |
 | Cleaned policy upload | Real Add to agent completed; final status Ready |
-| Three-question Prompt | Tested, saved, and bound in the real UI; model output saved separately |
-| Cleaning, semantic chunking, three requests, dual-citation validation | Completed locally |
-| Excel audit example | Generated and explicitly identified as an offline human-labeled fixture |
-| SharePoint metadata, actual Azure retrieval, user contract upload/parsing, online report | Not yet run end to end; authorized lab resources required |
+| Native policy Q&A | 2026-10-13 actual 30-day answer with policy.clean.md citation |
+| Three-question Prompt | 2026-10-13 actual cloud retest passed three-query validation; separate from agent file extraction |
+| User contract attachment | Actually uploaded and sent, but the final reply requested contract text; extraction not accepted |
+| Full contract text fallback | Actual native-knowledge review identifies three conflicts and one uncovered clause; translated quotes/missing chunkId and URL prevent strict audit acceptance |
+| Cleaning, semantic chunking, three requests, dual-citation validation | prepare.mjs rerun locally against the human-labeled fixture |
+| Excel audit example | Existing historical offline human-labeled workbook retained, not regenerated or presented as online output |
+| SharePoint metadata, actual Azure retrieval, online report | Not executed end to end; authorized existing lab resources and integrations required |
 
 The scripts share [Lab 04-01's retrieval validation module](../lab-04-01/scripts/rag.mjs), maintaining the same filtering and gating rules across both scenarios. Keep both directories together. See [manifest.json](screenshots/manifest.json) for screenshot sources.
+
+[Dated rerun provenance](screenshots/rerun-2026-10-13.json) distinguishes native knowledge, cloud Prompt calls, actual attachment tests, and the fallback's incomplete audit fields. No measured cloud retrieval accuracy or online workbook acceptance is claimed.
 
 ## Official References
 
